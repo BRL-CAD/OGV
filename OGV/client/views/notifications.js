@@ -35,11 +35,13 @@ throwNotification = function(message)
 
 /**
  * throwError shows a failure message, and is displayed with
- * red background in browser
+ * red background in browser. The clearNotifications function
+ * ceases to pop-up the notification again and again.
  */
 throwError = function(message)
 {
     Notifications.insert({message:message, seen:false, error:true});
+    clearNotifications();
 }
 
 
