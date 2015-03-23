@@ -67,7 +67,7 @@ Template.dashboard.events({
 	
 	    ProfilePictures.insert(fsFile, function(err, dpFile) {
 		if (err) {
-		    throwError(err.reason);
+		    throwError('Upload a photo of size not more than 300 X 300');
 	    	} else {
 		    throwNotification('Profile pic uploaded');
 	    	    saveSettings(dpFile._id);
