@@ -27,10 +27,6 @@
  *  and use OGV.
  */
 
-Accounts.config({
-  sendVerificationEmail: true
-});
-
 /**
  * Create a test user without admin roles and a super user with 
  * admin roles on a fresh install (when number of users is zero)
