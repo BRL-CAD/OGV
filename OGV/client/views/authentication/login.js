@@ -83,7 +83,37 @@ Template.logIn.events({
 		}
 	});
 	
+	},
+
+    'click img#loginGithub': function(e, t) 
+    {
+    e.preventDefault();
+	
+    Meteor.loginWithGithub(function(err){
+        requestOfflineToken: 'true'
+        if(err) {
+        	throwError(err.reason);
+        	console.log(err);
+        } else {
+        	throwNotification('Welcome back');
+
+        	var currentUser = Meteor.user();
+
+        	Meteor.users.update({_id: currentUser._id}, {$set:{'emails.0.verified': true}}, function(error) {
+        		if (error) {	
+        			throwError(err.reason);
+		    		console.log(err);
+    			} else {
+			    	throwNotification("Email Verified");
+		    		Router.go('/upload');
+				}
+			});
+		}
+	});
+	
 	}
+
+
 		
 
 });
