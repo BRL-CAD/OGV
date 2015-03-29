@@ -6,11 +6,19 @@
 			<input class="primary-input email" id="log-in-email" type="email" name="email" placeholder="your email address here" >
 			<input class= "primary-input password" id="log-in-password" type="password" name="password" placeholder="password">
 			<button class="btn btn-default primary-input primary-btn" type="submit"> Log In </button>
+			
+			<h4 class="meta-links" align="center" style="color:#e74c3c">OR</h4>
+			
+			<button id="loginGoogle" class="btn btn-default primary-input primary-btn">
+        		<i class="fa fa-google-plus fa-fw"></i> Sign in with Google
+    		</button>
+    		
 		</form>
 		<a class = "meta-links" id="show-forgot-password" href="/forgot-password" > Forgot Password </a>
 		<a class = "meta-links" id="show-sign-up" href="/sign-up" > Sign Up </a>
 	</div>
 	{{else}}
-		{{>modelFeed}}
+		{{> modelFeed}}
 	{{/unless}}
 </template>
+

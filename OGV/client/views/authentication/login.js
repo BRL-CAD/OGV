@@ -43,18 +43,56 @@ Template.logIn.events({
 	    isNotEmpty(password) &&
 	    isValidPassword(password)) {
 	    Meteor.loginWithPassword(email,password,function(err){
-	        if (err) {
-		    throwError(err.reason);
-		    console.log(err);
-		} else {
-		    throwNotification('Welcome back');
-		    Router.go('/upload');
-		}
+	  	  	if (err) {
+			    throwError(err.reason);
+		    	console.log(err);
+			} else {
+		    	throwNotification('Welcome back');
+		    	Router.go('/upload');
+			}
 	    });
 	}
 
 	return false;
 	
     },
- 
-});	    
+
+    'click button#loginGoogle': function(e, t) 
+    {
+    e.preventDefault();
+	
+
+
+    Meteor.loginWithGoogle(function(err){
+        requestOfflineToken: 'true'
+        if(err) {
+        	throwError(err.reason);
+        	console.log(err);
+        } else {
+        	throwNotification('Welcome back');
+
+        	var currentUser = Meteor.user();
+
+        	Meteor.users.update({_id: currentUser._id}, {$set:{'emails.0.verified': true}}, function(error) {
+        		if (error) {	
+        			throwError(err.reason);
+		    		console.log(err);
+    			} else {
+			    	throwNotification("Email Verified");
+		    		Router.go('/upload');
+				}
+			});
+		}
+	});
+	
+	}
+		
+
+});
+/*
+if(Meteor.user()._id != null){
+	var currentUser = Meteor.user();
+	Meteor.users.update({_id: currentUser._id}, {$set:{'emails.0.address': currentUser.services.google.email, 'emails.0.verified': true}});
+}
+*/	    	
+    
