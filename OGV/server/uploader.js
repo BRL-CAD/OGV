@@ -49,8 +49,8 @@ Meteor.methods({
 	function gToObj()
 	{
 	    var objects;
-	    var mgedPath = '/usr/brlcad/dev-7.25.0/bin/mged';
-	    var g_objPath = '/usr/brlcad/dev-7.25.0/bin/g-obj';
+	    var mgedPath = '/usr/brlcad/rel-7.24.2/bin/mged';
+	    var g_objPath = '/usr/brlcad/rel-7.24.2/bin/g-obj';
 	    var cmd = mgedPath + " -c  " + uploadFilePath +" ls -a 2>&1";
 	    
 	    child = exec(cmd, function (error, stdout, stderr) {
