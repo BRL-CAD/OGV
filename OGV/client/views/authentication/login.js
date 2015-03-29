@@ -57,12 +57,10 @@ Template.logIn.events({
 	
     },
 
-    'click button#loginGoogle': function(e, t) 
+    'click img#loginGoogle': function(e, t) 
     {
     e.preventDefault();
 	
-
-
     Meteor.loginWithGoogle(function(err){
         requestOfflineToken: 'true'
         if(err) {
