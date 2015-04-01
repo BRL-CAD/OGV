@@ -57,6 +57,8 @@ Template.logIn.events({
 	
     },
 
+//let it be for the time being, befor I make changes to the pakage itself
+
     'click img#loginGoogle': function(e, t) 
     {
     e.preventDefault();
@@ -112,15 +114,4 @@ Template.logIn.events({
 	});
 	
 	}
-
-
-		
-
 });
-/*
-if(Meteor.user()._id != null){
-	var currentUser = Meteor.user();
-	Meteor.users.update({_id: currentUser._id}, {$set:{'emails.0.address': currentUser.services.google.email, 'emails.0.verified': true}});
-}
-*/	    	
-    
