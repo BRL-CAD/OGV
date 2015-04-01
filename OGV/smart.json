@@ -2,8 +2,6 @@
   "packages": {
     "ogv-threejs": {},
     "iron-router": {},
-    "collectionFS": {},
-    "Dropzonejs": {},
     "ui-dropped-event": {},
     "cfs-ui": {},
     "roles": {}
