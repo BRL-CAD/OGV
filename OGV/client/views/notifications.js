@@ -30,6 +30,7 @@ Notifications = new Meteor.Collection(null);
 throwNotification = function(message) 
 {
     Notifications.insert({message:message, seen:false, error:false});
+    setTimeout(function(){clearNotifications();}, 2000);
 }
 
 
@@ -40,6 +41,7 @@ throwNotification = function(message)
 throwError = function(message)
 {
     Notifications.insert({message:message, seen:false, error:true});
+    setTimeout(function(){clearNotifications();}, 2000);
 }
 
 
@@ -60,7 +62,7 @@ clearNotifications = function()
 Template.notifications.helpers({
     notifications : function()
     {
-	return Notifications.find();
+    return Notifications.find();
     }
 });
 
@@ -74,6 +76,6 @@ Template.notification.rendered = function()
 {
     var notification = this.data;
     Meteor.defer(function() {
-	Notifications.update(notification._id, {$set: {seen: true}});
+    Notifications.update(notification._id, {$set: {seen: true}});
     });
-}   	 
+}        
