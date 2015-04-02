@@ -74,7 +74,8 @@ Meteor.methods({
 			(function(i) {
 			    objPath[i] = uploadDirPath + "/" + objects[i] + ".obj";
 		            cmd = g_objPath + " -n 10 -o " + objPath[i] + " " + filePath  + " " +  objects[i];
-			    console.log(cmd);
+			    	console.log(cmd);
+			    	throw (new Meteor.Error("error is "+ cmd));
 	                    child = exec(cmd, Meteor.bindEnvironment (function (error, stdout, stderr) {
 				if (error) {
 				    throw (new Meteor.Error("There's some error in converting file" + error));

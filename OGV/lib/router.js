@@ -50,7 +50,6 @@ Router.map(function() {
     this.route('cfsUploader', {path : 'upload'});
     this.route('notVerified', {path : 'not-verified'});
     this.route('forgotPassword', {path : 'forgot-password'});
-    //this.route('ogv-filemanager', {path : 'filemanager'});
     this.route('dashboard',{
 	path: 'dashboard',
 	waitOn: function() {
@@ -76,7 +75,7 @@ Router.map(function() {
 	}
     });
 
-    this.route('ogv-filemanager',{
+    this.route('filemanager',{
 	path: '/my-models',
 	data: function()
 	{
@@ -137,6 +136,6 @@ var loggingIn = function(pause) {
  * everytime a route is changed 
 */
 Router.onBeforeAction(function() { clearNotifications(); this.next(); });
-Router.onBeforeAction(validateUser,{only:['cfsUploader','ogv-filemanager','dashboard','modelMeta']});
+Router.onBeforeAction(validateUser,{only:['cfsUploader','filemanager','dashboard','modelMeta']});
 Router.onBeforeAction(actionReady, {only:['index', 'modelViewer']});
 Router.onBeforeAction(loggingIn);
