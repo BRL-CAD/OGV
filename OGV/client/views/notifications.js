@@ -30,6 +30,7 @@ Notifications = new Meteor.Collection(null);
 throwNotification = function(message) 
 {
     Notifications.insert({message:message, seen:false, error:false});
+    setTimeout(function(){clearNotifications();}, 2000);
 }
 
 
@@ -40,6 +41,7 @@ throwNotification = function(message)
 throwError = function(message)
 {
     Notifications.insert({message:message, seen:false, error:true});
+    setTimeout(function(){clearNotifications();}, 2000);
 }
 
 
