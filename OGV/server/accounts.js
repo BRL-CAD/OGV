@@ -36,6 +36,7 @@ Accounts.config({
  * admin roles on a fresh install (when number of users is zero)
  */
 
+
 if (Meteor.users.find().fetch().length === 0) {
     var users = [
 	{name:"Test User",email:"normal@example.com",roles:[]},
@@ -55,7 +56,6 @@ if (Meteor.users.find().fetch().length === 0) {
 
 	// email verification
 	Meteor.users.update({_id: id}, {$set:{'emails.0.verified': true}});
-
 	Roles.addUsersToRoles(id, userData.roles);
     
     });

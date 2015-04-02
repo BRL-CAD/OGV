@@ -1,5 +1,4 @@
 standard-app-packages
-accounts-password
 iron:router
 cfs:collection-filters
 cfs:standard-packages
@@ -10,4 +9,14 @@ bootstrap
 ishwerdas:ogv-threejs
 dbarrett:dropzonejs
 raix:ui-dropped-event
+accounts-password
+accounts-google
+accounts-github
+accounts-facebook
+accounts-twitter
+accounts-base
 
+ian:accounts-ui-bootstrap-3
+twbs:bootstrap
+service-configuration
+google
