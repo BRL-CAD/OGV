@@ -560,3 +560,8 @@ input:focus {
 .clear {
     float:none;
 }
+
+textarea {
+   resize: none;
+   text-align: justify;
+}
