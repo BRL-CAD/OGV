@@ -565,26 +565,3 @@ input:focus {
 	white-space: nowrap;
 	display:inline;  
 }
-
-#check1, #check2, #check3, #check4, #check5, #check6, #check7, #check8, #check9, #check10, #check11, #check12 
-{
-	margin-top: 0px;
-	width: 20px;
-	min-height: 0px;
-	float: left;
-}
-
-#checkform-left {
-	width:50%;
-	float: left;
-}
-
-#checkform-right {
-	width:50%;
-	float: right;
-	margin-bottom:20px;
-}
-
-label {
-	font-size:17px;
-}
