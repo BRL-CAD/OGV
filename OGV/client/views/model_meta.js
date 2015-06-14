@@ -54,12 +54,29 @@ Template.modelMeta.events({
 	file = $('#desc-model-thumb')
 	
 	var fsFile = new FS.File(e.target[2].files[0]);
+<<<<<<< HEAD
 	fsFile.gFile = modelId;      
         	
+=======
+	fsFile.gFile = modelId;
+
+	/**
+	* Delete any thumbnail association with the model.
+	* Thumbnail will be deleted before updating
+	* No thumbnail deletion will happen if there is no thumbnail present yet.
+	*/
+    var currentModel = ModelFiles.findOne(modelId);	
+    var prevThumbnail = ThumbFiles.findOne(currentModel.thumbnail);
+    if(typeof prevThumbnail != 'undefined'){
+		ThumbFiles.remove(currentModel.thumbnail);
+    }
+
+>>>>>>> origin/edit-info
 	ThumbFiles.insert(fsFile,function(err,thumbFile) {
 	    if (err) {
 		throwError(err.reason);
 	    } else {
+<<<<<<< HEAD
 		throwNotification("Image has been Uploaded" );
 		throwNotification(category);
 		ModelFiles.update(modelId, {$set: {name: filename, about: description, thumbnail:thumbFile._id, categories: category}}, function(error, res) {
@@ -74,3 +91,19 @@ Template.modelMeta.events({
 	}); 
     }
 });
+=======
+			throwNotification("Thumbnail Image has been Uploaded" );
+			ModelFiles.update(modelId, {$set: {name: filename, about: description, thumbnail:fsFile._id}}, function(error, res) {
+			    if (error) {
+				throwError(error.reason);
+			    } else {
+				throwNotification("Data about model has been saved");
+			    }
+			});
+			Router.go('/my-models');
+	  		throwNotification("Data about model has been saved");
+	    }
+	}); 
+	}    
+});
+>>>>>>> origin/edit-info

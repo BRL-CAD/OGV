@@ -76,6 +76,9 @@ ModelFiles.allow({
     download: function(userId, file) 
     {
     	return true;
+    },
+    remove: function (userId, file) {
+        return userId && file.owner === userId;
     }	
 });
 
@@ -103,6 +106,9 @@ OBJFiles.allow({
     download: function(userId, file) 
     {
     	return true;
+    },
+    remove: function (userId, file) {
+        return userId && file.owner === userId;
     }	
 });
 
@@ -132,7 +138,7 @@ ThumbFiles = new FS.Collection ("thumbFiles", {
 ThumbFiles.allow({
     insert: function(userId, file) 
     { 
-        var owner = ModelFiles.findOne(file.gFile).owner ;
+    var owner = ModelFiles.findOne(file.gFile).owner ;
 	if (userId == owner) {
   	    return true; 
 	} else {
@@ -153,5 +159,10 @@ ThumbFiles.allow({
     download: function(userId, file) 
     {
     	return true;
+    },
+
+    remove: function (userId, file) {
+        return true;  
     }	
+    
 });

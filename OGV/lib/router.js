@@ -71,7 +71,14 @@ Router.map(function() {
 	path: '/description/:_id',
 	data: function() 
 	{
-	    return ModelFiles.findOne(this.params._id);
+		var model = ModelFiles.findOne({'owner' : Meteor.user()._id});
+	 	if( model == null ){
+	 		Router.go('/upload');
+	 		return;
+	 	} else {
+	 		return ModelFiles.findOne(this.params._id);	
+	 	}
+	  
 	}
     });
 

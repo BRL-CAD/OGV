@@ -31,3 +31,20 @@ Template.filemanager.helpers({
     }
 });
 
+Template.filemanager.events({
+	"click .delete": function () {
+		var txt;
+		var r = confirm("Are you sure, you want to delete your model?");
+		if (r == true) {
+			//Removing both ThumbFiles and ModelFiles associated with the give model id
+		    var model = ModelFiles.findOne(this._id);
+		    //In case model is without a thumbnail
+		    if(typeof prevThumbnail != 'undefined'){
+				ThumbFiles.remove(model.thumbnail);
+    		}
+		    ModelFiles.remove(model._id);
+		    throwNotification("Model permanently deleted");
+		}
+  	}
+
+});

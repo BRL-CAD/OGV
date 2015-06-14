@@ -7,13 +7,19 @@
 		{{> aboutModel}}
 		{{/if}}
 	{{/each}}
+
 	</div>
     </div>
 </template>
 
 <template name ="aboutModel">
      <div class="model-file .col-xs-3">
-	{{> modelView }}
+		{{> modelView }}
+		
+		<!-- check here -->
+		<button class="delete">&times;</button>
+		<button class="edit"><a href="/description/{{_id}}">Properties</a></button>
      </div>
+  
 </template>
 
