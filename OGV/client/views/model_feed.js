@@ -73,7 +73,7 @@ Template.modelPost.helpers({
 Template.modelView.helpers({
     thumbImg:function()
     {
-	thumbImage = ThumbFiles.findOne({gFile:this._id});
-	return thumbImage;  
+        thumbImage = ThumbFiles.findOne({gFile:this._id});
+        return thumbImage;  
     }
 });

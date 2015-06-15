@@ -85,6 +85,7 @@ srp@1.0.1
 standard-app-packages@1.0.3
 templating@1.0.9
 tracker@1.0.3
+twbs:bootstrap@3.3.4
 ui@1.0.4
 underscore@1.0.1
 url@1.0.2

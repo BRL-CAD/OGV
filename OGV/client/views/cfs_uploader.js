@@ -8,6 +8,7 @@ Template.cfsUploader.events({
     {
 	 uploadFile(event, temp);
     }
+
 });
 
 function uploadFile(event, temp)

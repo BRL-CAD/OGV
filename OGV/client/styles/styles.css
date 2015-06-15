@@ -560,3 +560,8 @@ input:focus {
 .clear {
     float:none;
 }
+
+.item {
+	white-space: nowrap;
+	display:inline;  
+}

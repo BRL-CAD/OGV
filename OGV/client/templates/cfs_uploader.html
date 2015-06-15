@@ -16,22 +16,28 @@
 		<form action=" " method="post" class="secondary-form" id="uploader-form">
 						
 						
-			<label for="filename" class ="input-head"> Filename </label>
+			<label for="filename" class ="input-head"><strong> Filename </strong></label>
 			<p class ="help-text"> What you want to be known as around </p>	
 			<input class="form-control filename" id="desc-filename" name="filename" value="{{ name }}" type="text">
 
-			<label for="uplaoder-about" class ="input-head"> About Model: </label>
+			<label for="uplaoder-about" class ="input-head"> <strong>About Model:</strong> </label>
 			<p class = "help-text"> Provide a short description about your model </p>
 			<textarea class="form-control secondary-textarea" id = "desc-about" cols=25 >{{ about }}</textarea>
 
-			
-			<label for="filename" class ="input-head"> Model-Image </label>
+			<label for="filename" class ="input-head"><strong> Model-Image</strong> </label>
 			<p class ="help-text"> An image that will be used as a thumbnail for your model, the preferred size is 500 X 300 </p>	
 			<input class="form-control model-thumb" id="desc-model-thumb" name="modelThumb" type="file">
+
+
 
 			<input id = "model-id" type = "hidden" value = "{{ _id }}">
 
 			<button class="btn primary-btn btn-default" type="submit" id="save-btn"> Save </button>
 		</form>
+		<br><br>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 75b05b4c86dc11382ed1affd2181e0d7e20a0a6d
 	</div>
 </template>
