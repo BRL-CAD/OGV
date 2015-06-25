@@ -68,6 +68,7 @@ mongo@1.0.8
 npm-bcrypt@0.7.7
 observe-sequence@1.0.3
 ordered-dict@1.0.1
+polguixe:meteor-datgui@0.5.1_4
 raix:eventemitter@0.0.1
 raix:ui-dropped-event@0.0.7
 random@1.0.1
