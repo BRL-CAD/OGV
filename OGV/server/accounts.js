@@ -62,7 +62,7 @@ if (Meteor.users.find().fetch().length === 0) {
 
 } 
 
-Accounts.onCreateUser(function(options, user) {
+/*Accounts.onCreateUser(function(options, user) {
     var followingArray = [];
     //followingArray[0] = user._id;
     var adminUser = Meteor.users.findOne({'roles.0': "admin"});
@@ -81,6 +81,7 @@ Accounts.onCreateUser(function(options, user) {
 
     return user;
 });
+*/
 
 /*Meteor.users.allow({
     update: function(userId, user, fields) 

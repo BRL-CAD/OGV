@@ -1518,12 +1518,11 @@ svg {
 {
     z-index: 1400;
     position:fixed;
-    top:45%;
+    top:65%;
     right: -10px;
     color:#333;
     height:5px;
     width:90px;
-    background-color: blue;
     transform: rotate(270deg);  
 }
 
@@ -1542,7 +1541,7 @@ svg {
 
 .cbp-spmenu-vertical {
     height: 50%;
-    top: 10%;
+    top: 5%;
     z-index: 1200;
 }
 
@@ -1565,9 +1564,10 @@ svg {
 
 #feedbackContainer
 {
-    background-color: white;
+    background-color: rgb(237, 236, 236);
     padding:5% 5% 5% 5%;
     border-radius: 15px;
+    width:100%;
 }
 
 #search-box, #search-user-box {
