@@ -1659,3 +1659,9 @@ hr {
     margin-top:20px;
     border: 1px solid #dadada;
 }
+
+.mid_div
+{
+    max-width: 1000px;
+    margin:auto;
+}

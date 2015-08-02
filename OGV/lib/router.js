@@ -125,12 +125,12 @@ Router.map(function() {
     }
     });
 
-    this.route('explore', {
+/*    this.route('explore', {
         path:'/explore',
         waitOn:function(){
             Meteor.subscribe('modelFiles');
         }
-    });
+    });*/
 
     this.route('models', {
         path : '/newsfeed',
