@@ -1,33 +1,36 @@
 <template name="profilePage">
-    <div id="profileContainer">
-        <a href="/profile/{{ person._id }}">
-            <div class="post-item user-image" style="background-image:url(&quot;{{userImg}}&quot;); width:200px; height:200px;left:70px;position:relative;"></div>
-        </a>
+    <div class="mid_div">
+        <div id="profileContainer">
+            <br><br>
+            <a href="/profile/{{ person._id }}">
+                <div class="post-item user-image" style="background-image:url(&quot;{{userImg}}&quot;); width:200px; height:200px;left:12%;position:relative;"></div>
+            </a>
 
-        <div id="profileInfo">
-            <h2>{{ person.profile.name }}</h2>
-            <strong>MODELS: {{person.profile.countModels}}</strong>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <strong>FOLLOWERS: {{followerCount}}</strong>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <strong>FOLLOWING: {{followingCount}}</strong><br>
-            
-            {{#if urlUser}}
-                {{#if currentFollowsThis}}
-                    <button class="btn primary-btn btn-default" id="unfollowButton" onmouseover="changeText()" onmouseout="changeback()">FOLLOWING</button>
-                {{else}}
-                    <button class="btn primary-btn btn-default" id="followButton"> + FOLLOW </button>
+            <div id="profileInfo">
+                <h2>{{ person.profile.name }}</h2>
+                <strong>MODELS: {{person.profile.countModels}}</strong>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <strong>FOLLOWERS: {{followerCount}}</strong>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <strong>FOLLOWING: {{followingCount}}</strong><br>
+                
+                {{#if urlUser}}
+                    {{#if currentFollowsThis}}
+                        <button class="btn primary-btn btn-default" id="unfollowButton" onmouseover="changeText()" onmouseout="changeback()">FOLLOWING</button>
+                    {{else}}
+                        <button class="btn primary-btn btn-default" id="followButton"> + FOLLOW </button>
+                    {{/if}}
                 {{/if}}
-            {{/if}}
-            <br>
-            <br><h4><strong>{{ person.profile.bio }} </strong></h4>
-            <strong>Here Since:</strong> <em>{{ person.createdAt }}</em> <br>
+                <br>
+                <br><h4><strong>{{ person.profile.bio }} </strong></h4>
+                <strong>Here Since:</strong> <em>{{ person.createdAt }}</em>
+            </div>
         </div>
-    </div>
 
-    <div id="profileModelFeedContainer">
-        <hr>
-        {{> profileModelFeed}}
+        <div id="profileModelFeedContainer">
+            <hr>
+            {{> profileModelFeed}}
+        </div>
     </div>
 
     <script>

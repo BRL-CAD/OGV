@@ -57,9 +57,27 @@ Template.modelPost.helpers({
      * returns image of the user from database, if there's no image a default
      * image is shown.
      */
+
+    userImg: function() 
+    {
+        var currentProfile = Meteor.users.findOne(this.owner);
+        var picId = currentProfile.profile.pic;
+        var pic = ProfilePictures.findOne(picId);
+        var picUrl = pic.url();
+        if(pic){
+            return picUrl;
+        } else if( currentProfile.services.google ){
+            return currentProfile.services.google.picture;
+        } else if ( currentProfile.services.facebook ){
+            return currentProfile.services.facebook.picture;
+        } else  {
+            return '/public/icons/User.png';
+        }
+    },
+/*	
     userImg: function()
     {
-	modelOwner = Meteor.users.findOne(this.owner);
+    modelOwner = Meteor.users.findOne(this.owner);
 	picId = modelOwner.profile.pic;
 	pic = ProfilePictures.findOne(picId);
 	picUrl = pic.url();
@@ -69,7 +87,7 @@ Template.modelPost.helpers({
 	    return '/public/icons/User.png';
 	}
     },
-    
+*/    
     owner: function()
     {
 	return Meteor.users.findOne(this.owner);

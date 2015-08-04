@@ -512,7 +512,7 @@ input:focus {
     border-radius:5px;
     min-width: 300px;
     max-width: 600px;
-    z-index: 950;
+    z-index: 1450;
     padding: 20px 20px;
     padding-top:50px;
     overflow-y:auto;
@@ -607,6 +607,9 @@ input:focus {
 
 .keyboard-shortcuts {
     padding: 1em;
+    position: fixed;
+    top: 50%;
+    right: 5%;
 }
 
 .keyboard-shortcuts .keyboard {
@@ -1664,4 +1667,9 @@ hr {
 {
     max-width: 1000px;
     margin:auto;
+}
+
+#profileContainer
+{
+    
 }

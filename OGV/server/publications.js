@@ -56,7 +56,7 @@ Meteor.publish('ogvSettings', function(){
  * for security reasons
  */
 Meteor.publish('profiles', function() {
-    return Meteor.users.find({}, {fields: {emails : 1, profile: 1, roles: 1}});
+    return Meteor.users.find({}, {fields: {emails : 1, profile: 1, roles: 1, services: 1}});
 }); 
 
 Meteor.publish("userProfile",function(id){

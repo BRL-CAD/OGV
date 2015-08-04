@@ -135,7 +135,8 @@ Router.map(function() {
     this.route('models', {
         path : '/newsfeed',
         waitOn: function() {
-            Meteor.subscribe('modelFiles');
+            return [Meteor.subscribe("profiles"), Meteor.subscribe('modelFiles')];
+            /*Meteor.subscribe('modelFiles');*/
         }
     });
 });
