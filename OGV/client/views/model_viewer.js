@@ -90,8 +90,8 @@ Template.modelViewer.helpers({
     var parts = location.href.split('/');
     //id of model whose page is being visited
     var modelId = parts.pop(); 
-    var model = ModelFiles.findOne(modelId);
-    return model.owner;
+    var owner = ModelFiles.findOne({_id: modelId}).owner;
+    return owner;
     }
 });
 

@@ -12,47 +12,6 @@
 		{{> searchUserResult}}
 	</nav>
 
-<!-- 	<h3>Filters</h3>
-	
-		<select class = "filter-select" id="filter-category" form="filter">
-	  		<option value="" disabled selected>Categories</option>
-	  		<option value="Architecture">Architecture</option>
-	  		<option value="Animal">Animal</option>
-	  		<option value="Character">Character</option>
-	  		<option value="Electronics">Electronics </option>
-	  		<option value="Games">Games</option>
-	  		<option value="Miscellaneous">Miscellaneous</option>
-			<option value="Machines">Machines</option>
-			<option value="Scenes">Scenes</option>
-			<option value="Science">Science</option>
-			<option value="Vegetal">Vegetal</option>
-			<option value="Vehicles">Vehicles</option>
-			<option value="Weapons">Weapons</option>
-		</select>
-		
-		<select class = "filter-select" id = "filter-time" form="filter">
-	  		<option value="" disabled selected>Time period</option>
-	  		<option value="This Day">This Day</option>
-	  		<option value="This Week">This Week</option>
-	  		<option value="This Month">This Month</option>
-		</select>	
-
-		<select class = "filter-select" id = "filter-sort" form="filter">
-	  		<option value="" disabled selected>Sort by</option>
-	  		<option value="Upload Time">Uploaded Time</option>
-	  		<option value="Number Of Views">Number of Views</option>
-	  		<option value="Number of Likes">Number of Likes</option>
-		</select>
-
-		<button class="btn primary-btn btn-default" type="submit" id="save-btn"> Search </button>
-	
-
-	<h3 style="color:#e74c3c;font-weight:300;" id="selected-filters"></h3>
-
-	<div id="exploreResult">
-		{{> exploreResult}}
-	</div>
- -->
 	<script>
 		$(document).ready(function() {
 		    $('#search-box').focusin(function() {
@@ -72,17 +31,6 @@
     		});
 		});
 	</script>
-</template>
-
-
-<template name="exploreResult">
-	{{#if models}}
-	{{#each models}}
-	    {{#if converted }}
-			{{> modelPost }}
-	    {{/if}}
-	{{/each}}
-    {{/if}}
 </template>
 
 

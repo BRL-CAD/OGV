@@ -1,9 +1,10 @@
 <template name = "modelFeed">
 	<div class = "mid_div">
+		<br>
 		{{> explore}}
 	    {{> newsfeedSidebar}}
 	    <!--<div class="feed-wrapper"> -->
-	    <br><br>
+	    <br>
 	    <h1 style="margin: 10px auto 20px 13px">Hi, {{currentUser.profile.name}}!</h1> 
 	    <div class="container feed-wrapper">
 		    {{#if models}}
@@ -12,7 +13,7 @@
 					{{> modelPost }}
 			    {{/if}}
 			{{/each}}
-			<button class="btn primary-btn btn-default" id="loadMoreButton" style="margin: 10px auto auto 250px"> LOAD MORE . . . </button>
+			<!-- <button class="btn primary-btn btn-default" id="loadMoreButton" style="margin: 10px auto auto 250px"> LOAD MORE . . . </button> -->
 		    {{else}}
 			<h3>You seem to be new here, your newsfeed looks empty</h3>
 		    {{/if}}

@@ -126,7 +126,7 @@ h2 {
 
 .rm-item {
     display:inline-block;
-    width:50px;
+    width:50px;    
     height:40px;
 }
 
@@ -415,7 +415,8 @@ input:focus {
     margin-left: 5px;
     line-height: 1.5;   
     max-width: 700px;
-    margin:30px auto 30px auto;
+    margin:0 0 0 0;
+    position:relative;
 }
 
 .modelHeading {
@@ -1574,12 +1575,12 @@ svg {
 }
 
 #search-box, #search-user-box {
-  padding: 10px;
-  width: 49%;
-  height: 50px;
-  border: 1px solid #eee;
-  outline: 0;
-  font-size: 15px;
+    padding: 10px;
+    width: 49%;
+    height: 50px;
+    border: 1px solid #eee;
+    outline: 0;
+    font-size: 15px;
 }
 
 .item {
@@ -1661,6 +1662,13 @@ hr {
     border-radius:5px;
     margin-top:20px;
     border: 1px solid #dadada;
+    right:13%;
+    top:31%;
+    position:fixed;
+}
+
+.user-suggest {
+    top:65%;
 }
 
 .mid_div
@@ -1669,7 +1677,3 @@ hr {
     margin:auto;
 }
 
-#profileContainer
-{
-    
-}

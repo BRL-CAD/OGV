@@ -2,7 +2,7 @@
     <div class="newsfeed-info-section">
 	
 		<!-- About the current User -->
-		<div class="newsfeed-info-content">
+		<div class="newsfeed-info-content self-info">
 			<p style="color:#ccc;font-size: 15px;text-transform:upperCase"> {{myInfo.myUser.profile.name}}, that's you! </p>
 			<a href="/profile/{{ currentUser._id }}">
 		        <div class="post-item user-image" style="background-image:url(&quot;{{myInfo.userImg}}&quot;); width:100px; height:100px;"></div>
@@ -15,7 +15,7 @@
 
 
 		<!-- About whom to follow -->
-		<div class="newsfeed-info-content">
+		<div class="newsfeed-info-content user-suggest">
 			<p style="color:#ccc;font-size: 15px;"> SUGGESTED USERS </p>
 			{{#each suggestownerImg}}
 			<a href="/profile/{{ this.user }}">
