@@ -34,8 +34,8 @@
 
 			{{#each suggestownerInfo}}
 			<div id="suggest-profile-info">
-			    <a href="/profile/{{ this._id }}">{{profile.name}}</a>
-				<button class="btn primary-btn btn-default" id="followButton" onclick="followUser('{{this._id}}')"> + FOLLOW </button>
+			    <div id="suggest-user-name"><a href="/profile/{{ this._id }}">{{profile.name}}</a></div>
+				<div id="suggest-user-btn"><button class="btn primary-btn btn-default" id="followButton" onclick="followUser('{{this._id}}')"> + FOLLOW </button></div>
 			<br>
 			</div>
 			{{/each}}

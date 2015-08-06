@@ -1665,6 +1665,7 @@ hr {
     right:13%;
     top:31%;
     position: absolute;
+    margin-bottom: 100px;
 }
 
 .user-suggest {
@@ -1706,4 +1707,16 @@ hr {
 
 #followButton {
     height:30px;
+}
+
+#suggest-user-name {
+    white-space: nowrap; 
+    width: 7em; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    float:left;
+}
+
+#suggest-user-btn {
+    float:right;
 }
