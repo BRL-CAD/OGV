@@ -1,5 +1,3 @@
-var filter_array, text;
-
 Template.explore.events({
     "keyup #search-box": _.throttle(function(e) {
         var text = $(e.target).val().trim();
@@ -10,29 +8,6 @@ Template.explore.events({
         var text = $(e.target).val().trim();
         UserSearch.search(text);
     }, 200),
-
-    "change .filter-select": function(e) {
-        var newValue = $(e.target).val();
-        text = document.getElementById('selected-filters');
-        var add_text = document.createTextNode(newValue+ " + ");
-        text.appendChild(add_text);
-    },
-
-    'click #undo-latest': function(e) {
-        var filters = document.getElementById('selected-filters').innerHTML;
-        var filter_array = filters.split(" + ");
-        var text="";
-        filter_array.pop();
-        var text = filter_array.join(" + ").toString();
-        document.getElementById('selected-filters').innerHTML = text;
-    },
-
-    'click #save-btn': function(e, t){     
-        filter_array = text.innerHTML.split(" + ");    
-        alert(filter_array);
-        text.innerHTML = "";
-    }   
-
 });
 
 
@@ -85,37 +60,3 @@ Template.searchResult.rendered = function() {
 Template.searchUserResult.rendered = function() {
   UserSearch.search('');
 };
-
-/*
-Template.exploreResult.helpers ({
-    models: function() {
-        var filters = document.getElementById('selected-filters').innerHTML;
-        var filter_array = filters.split(" + ");
-        var currentUser = Meteor.user();
-
-        model = ModelFiles.find( {owner: {$not: currentUser._id}}, {categories: {$elemMatch: {$in: filter_array}}});
-        if (model.count()) {
-            return model;
-        } else {
-            return false;
-        }
-    }
-})
-*/
-
-Template.exploreResult.helpers({
-    /**
-     * models helper finds all the models from the database and then sorts
-     * them in reverse chronological order. 
-     */
-    models: function() 
-    {    
-    var currentUser = Meteor.user();
-    model = ModelFiles.find( {owner: {$in: currentUser.profile.following}, "categories.0": {$in: filter_array}}, {sort: {timeUploaded: -1}});
-    if (model.count()) {
-        return model;
-    } else {
-        return false;
-    } 
-    }
-}); 
