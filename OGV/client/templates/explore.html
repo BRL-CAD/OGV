@@ -21,6 +21,12 @@
     		$('#search-user-box').focusin(function() {
 	        	$('#cbp-spmenu-s4').show();
     		});
+
+        $('body').click(function(e) {
+          if (!$(e.target).closest('#cbp-spmenu-s3').length){
+              $("#cbp-spmenu-s3").hide();
+          }
+        });
 		});
 	</script>
 </template>

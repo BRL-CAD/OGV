@@ -23,14 +23,11 @@ Template.newsfeedSidebar.events({
                     throwNotification("You are now following this user");
                 }
             });
+
             }
         });
     }
 });
-
-Template.newsfeedSidebar.items = function() {
-  return popular_Models();
-};
 
 Template.newsfeedSidebar.helpers({
     /**
@@ -42,7 +39,9 @@ Template.newsfeedSidebar.helpers({
     suggestownerInfo: function()
     {
         var currentUser = Meteor.user();
-        return Meteor.users.find( {$and: [{"profile.follower": {$not: currentUser._id}}, {_id: {$not: currentUser._id}}]}, {sort:{"profile.countModels":-1}, limit: 1});
+        var allUsers = Meteor.users.find( {$and: [{"profile.follower": {$not: currentUser._id}}, {_id: {$not: currentUser._id}}]}, {sort:{"profile.countModels":-1}}).fetch();
+        var userIds = _.pluck(allUsers, "_id");
+        return Meteor.users.find({_id: {$in: userIds}}, {sort: {createdAt: -1}, limit: 5})
     },
 
     /**
@@ -51,24 +50,12 @@ Template.newsfeedSidebar.helpers({
     suggestownerImg: function()
     {
         var currentUser = Meteor.user();
-        var otherUser = Meteor.users.find( {$and: [{"profile.follower": {$not: currentUser._id}}, {_id: {$not: currentUser._id}}]}, {sort:{createdAt:-1}}).fetch();
+        var otherUser = Meteor.users.find( {$and: [{"profile.follower": {$not: currentUser._id}}, {_id: {$not: currentUser._id}}]}, {$orderby:{'profile.countModels':-1}}).fetch();
         var picIds = _.pluck(otherUser, "_id");
-        return ProfilePictures.find({user: {$in :picIds}}, {limit: 1});
+        return ProfilePictures.find({user: {$in :picIds}}, {sort:{createdAt: -1}, limit: 5});
     },
-
-    /**
-    * Returns models based on popularity be seeing the number of views.
-    */
-    suggestedModel: function()
-    {
-        var currentUser = Meteor.user();
-        return ModelFiles.find({owner: {$not: currentUser._id}});
-    },
-
     
-}); 
-
-Meteor.subscribe('popular_Models');
+});
 
 /**
 * returns details about the current user to be displayed on the newsfeed
@@ -99,5 +86,4 @@ Template.newsfeedSidebar.myInfo = function()
         followerCount: numberfollowers,
         followingCount: numberfollowings
     };
-
 }

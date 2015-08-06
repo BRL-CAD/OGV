@@ -4,12 +4,16 @@
 		<!-- About the current User -->
 		<div class="newsfeed-info-content self-info">
 			<p style="color:#ccc;font-size: 15px;text-transform:upperCase"> {{myInfo.myUser.profile.name}}, that's you! </p>
+			<div id="profile-pic">
 			<a href="/profile/{{ currentUser._id }}">
 		        <div class="post-item user-image" style="background-image:url(&quot;{{myInfo.userImg}}&quot;); width:100px; height:100px;"></div>
 		    </a>
-			Followers: {{myInfo.followerCount}}<br>
-			Following: {{myInfo.followingCount}}<br>
-			Models: {{myInfo.myUser.profile.countModels}}<br>
+		    </div>
+		    <div id="profile-info">
+				<h4>Followers <strong>{{myInfo.followerCount}}</strong></h4>
+				<h4>Following <strong>{{myInfo.followingCount}}</strong></h4>
+				<h4>Models <strong>{{myInfo.myUser.profile.countModels}}</strong></h4>
+			</div>
 		</div>
 		
 
@@ -17,15 +21,23 @@
 		<!-- About whom to follow -->
 		<div class="newsfeed-info-content user-suggest">
 			<p style="color:#ccc;font-size: 15px;"> SUGGESTED USERS </p>
+			
+			<div id="suggest-pic">
 			{{#each suggestownerImg}}
+			<div id ="suggest-profile-pic">
 			<a href="/profile/{{ this.user }}">
 		        <div class="post-item user-image" style="background-image:url(&quot;{{this.url}}&quot;); width:40px; height:40px;"></div>
-		    </a>
+		    </a>	
+		    </div>
 		    {{/each}}
+		    </div>
+
 			{{#each suggestownerInfo}}
+			<div id="suggest-profile-info">
 			    <a href="/profile/{{ this._id }}">{{profile.name}}</a>
 				<button class="btn primary-btn btn-default" id="followButton" onclick="followUser('{{this._id}}')"> + FOLLOW </button>
 			<br>
+			</div>
 			{{/each}}
 	    </div>
 

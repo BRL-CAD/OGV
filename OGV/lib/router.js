@@ -125,13 +125,6 @@ Router.map(function() {
     }
     });
 
-/*    this.route('explore', {
-        path:'/explore',
-        waitOn:function(){
-            Meteor.subscribe('modelFiles');
-        }
-    });*/
-
     this.route('models', {
         path : '/newsfeed',
         waitOn: function() {
@@ -139,6 +132,7 @@ Router.map(function() {
             /*Meteor.subscribe('modelFiles');*/
         }
     });
+
 });
 
 // add the dataNotFound plugin, which is responsible for

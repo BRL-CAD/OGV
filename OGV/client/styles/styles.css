@@ -1664,16 +1664,46 @@ hr {
     border: 1px solid #dadada;
     right:13%;
     top:31%;
-    position:fixed;
+    position: absolute;
 }
 
 .user-suggest {
-    top:65%;
+    top:58%;
 }
 
-.mid_div
-{
+.mid_div {
     max-width: 1000px;
     margin:auto;
 }
 
+#profile-info {
+    position: relative;
+    right:10%;
+    float:right;
+}
+
+#profile-pic {
+    position: relative;
+    left:5%;
+    float:left;
+}
+
+#suggest-profile-info {
+    position: relative;
+    right:7%;
+    float:right;
+    padding-bottom: 5%;
+}
+
+#suggest-profile-pic {
+    position: relative;
+}
+
+#suggest-pic {
+    float:left;
+    position: relative;
+}
+
+#followButton {
+    height:30px;
+}
