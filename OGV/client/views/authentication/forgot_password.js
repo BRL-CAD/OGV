@@ -46,7 +46,8 @@ Template.forgotPassword.events({
 		if (err) {
 		    throwError(err.reason);
 	        } else {
-		    throwNotification('Email Sent, Please check your mailbox to reset your password');
+		    /*throwNotification('Email Sent, Please check your mailbox to reset your password');*/
+		    sAlert.info('Email Sent, Please check your mailbox to reset your password', {effect: 'flip', onRouteClose: true, stack: false, timeout: 3000, position: 'top'});
 	        }
 	    });
 	}

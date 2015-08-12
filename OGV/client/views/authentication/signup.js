@@ -46,7 +46,7 @@ Template.signUp.events({
 	    if (err) {
 		throwError(err.reason);
 	    } else {
-		throwNotification('Congrats! Check your inbox at ' + email + ' to verify it');
+		sAlert.info('Congrats! Check your inbox at ' + email + ' to verify it', {effect: 'flip', onRouteClose: true, stack: false, timeout: 3000, position: 'top'});
 	  /*  if (isNotEmpty(email) && 
 		isNotEmpty(password) &&
 		isNotEmpty(username) &&

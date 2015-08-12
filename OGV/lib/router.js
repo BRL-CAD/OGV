@@ -161,8 +161,7 @@ var validateUser = function(pause) {
  * actionReady shows a route only after it has fetched all
  * the required data. 
  */
-var actionReady = function(pause) 
-{
+var actionReady = function(pause) {
     if (this.ready()) {
     this.next();
     } else {

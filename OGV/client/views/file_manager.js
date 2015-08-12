@@ -55,8 +55,8 @@ Template.filemanager.events({
 					    
 		    ModelFiles.remove(model._id);
 		    Meteor.users.update({_id: model.owner}, {$inc: {"profile.countModels": -1}});
-		    throwNotification("Model permanently deleted");
+		    /*throwNotification("Model permanently deleted");*/
+		    sAlert.info('Model permanently deleted', {effect: 'flip', onRouteClose: true, stack: false, timeout: 3000, position: 'top'});
 		}
   	}
-
 });

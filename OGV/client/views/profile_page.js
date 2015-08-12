@@ -16,7 +16,8 @@ Template.profilePage.events({
 		    	if (error) {
 					throwError(error.reason);
 		    	} else {
-					throwNotification("You are now following this user");
+					/*throwNotification("You are now following this user");*/
+					sAlert.info('You are now following this user', {effect: 'flip', onRouteClose: true, stack: false, timeout: 3000, position: 'top'});
 			    }
 			});
 		    }
@@ -41,7 +42,8 @@ Template.profilePage.events({
 		    	if (error) {
 					throwError(error.reason);
 		    	} else {
-					throwNotification("You are no longer following this user");
+					/*throwNotification("You are no longer following this user");*/
+					sAlert.info('You are no longer following this user', {effect: 'flip', onRouteClose: true, stack: false, timeout: 3000, position: 'top'});
 			    }
 			});
 		    }

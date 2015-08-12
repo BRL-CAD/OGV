@@ -55,7 +55,8 @@ Template.dashboard.events({
 		if (error) {
 		    throwError(error.reason);
 	    	} else {
-		    throwNotification("Settings saved");
+		    /*throwNotification("Settings saved");*/
+        sAlert.info('Settings saved', {effect: 'flip', onRouteClose: true, stack: false, timeout: 3000, position: 'top'});
 		}
 	    });
 	}
@@ -63,8 +64,10 @@ Template.dashboard.events({
 	if (e.target[2].files[0]) {
 	    var fsFile = new FS.File(e.target[2].files[0]);
 	    console.log(fsFile);
+      var currentUser = Meteor.user();
 	    fsFile.user = currentUser._id;
-		
+      fsFile.userCreatedAt = currentUser.createdAt;
+
 		var prevProfilePicture = ProfilePictures.findOne({user: currentUser._id});
 		if(typeof prevProfilePicture != 'undefined'){
 	   		ProfilePictures.remove(prevProfilePicture._id);
@@ -74,51 +77,15 @@ Template.dashboard.events({
 		if (err) {
 		    throwError(err.reason);
 	    	} else {
-		    throwNotification('Profile pic uploaded');
+		    /*throwNotification('Profile pic uploaded');*/
+        sAlert.info('Profile pic uploaded', {effect: 'flip', onRouteClose: true, stack: false, timeout: 3000, position: 'top'});
 	    	    saveSettings(dpFile._id);
 		} 
 	    });
 	} else {
 	    saveSettings();
 	}
-  
-	/*
-  var saveSettings = function(picId)
-  {   
-      /**
-       * If user has not changed the profile picture then use
-       * existing profile pic.
-       
-      if (!picId) {
-    picId = currentUser.profile.pic;
-      } 
-  
-      Meteor.users.update( currentUser._id,{ $set: {profile: {bio : userBio, name : userName, pic: picId} }}, function(error, res) {
-    if (error) {
-        sAlert.error(error.reason);
-        } else {
-        sAlert.success("Settings saved", {effect: 'flip', onRouteClose: false, stack: false, timeout: 4000, position: 'top'});  
-    }
-      });
-  }
-  
-  if (e.target[2].files[0]) {
-      var fsFile = new FS.File(e.target[2].files[0]);
-      console.log(fsFile);
-      fsFile.user = currentUser._id;
-  
-      ProfilePictures.insert(fsFile, function(err, dpFile) {
-    if (err) {
-        sAlert.error("Error: Invalid file format", {effect: 'flip', onRouteClose: false, stack: false, timeout: 8000, position: 'top'});
-        } else {
-        sAlert.success("Profile pic uploaded", {effect: 'flip', onRouteClose: false, stack: false, timeout: 4000, position: 'top'});        
-          saveSettings(dpFile._id);
-    } 
-      });
-  } else {
-      saveSettings();
-  }
-    */},
+  },
 
     /**
      * When admin form is submitted, get the values form the form

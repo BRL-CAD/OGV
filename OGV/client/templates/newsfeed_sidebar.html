@@ -86,7 +86,8 @@
 	                if (error) {
 	                    throwError(error.reason);
 	                } else {
-	                    throwNotification("You are now following this user");
+	                    /*throwNotification("You are now following this user");*/
+   	  					sAlert.info('You are now following this user', {effect: 'flip', onRouteClose: true, stack: false, timeout: 3000, position: 'top'});
 	                }
 	            });
 	            }

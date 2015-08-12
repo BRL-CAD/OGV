@@ -28,7 +28,8 @@ function uploadFile(event, temp)
 		if (error) {
 			throwError(error.reason);
 		} else {
-			throwNotification("Updated number of models for user");
+			/*throwNotification("Updated number of models for user");*/
+			sAlert.info('Updated number of models for user', {effect: 'flip', onRouteClose: true, stack: false, timeout: 3000, position: 'top'});
 		}
 	});
 
@@ -36,10 +37,10 @@ function uploadFile(event, temp)
 	    if (err) {
 			throwError("There was some error in uploading your file, please try again/later");
 	    } else {
-			throwNotification("File Uploaded, and will appear in file manager after it's converted"); 
+			/*throwNotification("File Uploaded, and will appear in file manager after it's converted");*/
+			sAlert.info('File Uploaded, and will appear in file manager after it\'s converted', {effect: 'flip', onRouteClose: true, stack: false, timeout: 3000, position: 'top'});	
 		}	   
 	});
-
 	Router.go("/description/" + fsFile._id);
 
     });

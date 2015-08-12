@@ -20,7 +20,8 @@ Template.newsfeedSidebar.events({
                 if (error) {
                     throwError(error.reason);
                 } else {
-                    throwNotification("You are now following this user");
+                    /*throwNotification("You are now following this user");*/
+                    sAlert.info('You are now following this user', {effect: 'flip', onRouteClose: true, stack: false, timeout: 3000, position: 'top'});
                 }
             });
 
@@ -52,7 +53,7 @@ Template.newsfeedSidebar.helpers({
         var currentUser = Meteor.user();
         var otherUser = Meteor.users.find( {$and: [{"profile.follower": {$not: currentUser._id}}, {_id: {$not: currentUser._id}}]}, {$orderby:{'profile.countModels':-1}}).fetch();
         var picIds = _.pluck(otherUser, "_id");
-        return ProfilePictures.find({user: {$in :picIds}}, {sort:{createdAt: -1}, limit: 5});
+        return ProfilePictures.find({user: {$in :picIds}}, {sort:{userCreatedAt: -1}, limit: 5});
     },
     
 });

@@ -70,7 +70,7 @@ Template.logIn.events({
         	throwError(err.reason);
         	console.log(err);
         } else {
-        	throwNotification('Welcome back');
+        	sAlert.info('Welcome back', {effect: 'flip', onRouteClose: true, stack: false, timeout: 3000, position: 'top'});
         	Router.go('/upload');
 		}
 	});
@@ -89,7 +89,7 @@ Template.logIn.events({
         	throwError(err.reason);
         	console.log(err);
         } else {
-        	throwNotification('Welcome back');
+        	sAlert.info('Welcome back', {effect: 'flip', onRouteClose: true, stack: false, timeout: 3000, position: 'top'});
         	Router.go('/upload');
 		}
 	});
@@ -108,7 +108,7 @@ Template.logIn.events({
         	throwError(err.reason);
         	console.log(err);
         } else {
-        	throwNotification('Welcome back');
+        	sAlert.info('Welcome back', {effect: 'flip', onRouteClose: true, stack: false, timeout: 3000, position: 'top'});
         	Router.go('/upload');
 		}
 	});
