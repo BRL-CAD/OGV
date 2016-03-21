@@ -18,7 +18,7 @@
  * information.
  */
 
-/** @file OGV/client/views/validator.js
+/** @file OGV/client/views/authentication/validator.js
  *  @brief Validation functions for the authentication forms
  *
  */
@@ -40,7 +40,7 @@ isNotEmpty = function(value)
     if (value && value !== '') {
 	return true;
     }
-    throwError("Please fill in all the fields");
+    sAlert.error('Please fill in all the fields', {effect: 'flip', onRouteClose: false, stack: false, timeout: 8000, position: 'top'});    
     return false;
 };
 
@@ -54,7 +54,7 @@ isEmail = function(value)
     if (filter.test(value)) {
 	return true;
     }
-    throwError("Your email address is not valid");
+    sAlert.error('Your email address is not valid', {effect: 'flip', onRouteClose: false, stack: false, timeout: 8000, position: 'top'});
     return false;
 };
 
@@ -65,7 +65,7 @@ isEmail = function(value)
 isValidPassword = function(password)
 {
     if (password.length < 6) {
-	throwError("Password should be at-least 6 characters long");
+    sAlert.error('Password should be at-least 6 characters long', {effect: 'flip', onRouteClose: false, stack: false, timeout: 8000, position: 'top'});    
 	return false;
     }
     return true;
@@ -81,7 +81,7 @@ areValidPasswords = function(password,confirmPassword)
 	return false;
     }
     if (password !== confirmPassword) {
-	throwError("Password and confirm-password fields don't match");
+    sAlert.error("Password and confirm-password fields don't match", {effect: 'flip', onRouteClose: false, stack: false, timeout: 8000, position: 'top'});    
 	return false;
     }
     return true;

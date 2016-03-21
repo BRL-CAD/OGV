@@ -1,4 +1,5 @@
-/*                     F I L E _ M A N A G E R . J S
+/**
+/*                    	L A N D I N G  P A G E . J S
  * BRL-CAD
  *
  * Copyright (c) 1995-2013 United States Government as represented by
@@ -18,16 +19,14 @@
  * information.
  */
 
-/** @file OGV/client/views/file_manager.js
- *  @brief Helper for filemanager.html
+/** @file OGV/client/views/authentication/landingPage.js
+ *  @brief Helper for landingPage.html
  *
- *  Searches for all the models that belong to the current user and 
- *  returns them.
+ * authenticate user credentials, shows the errors if any
  */
-Template.filemanager.helpers({
-    models: function() 
-    {
-	return ModelFiles.find({'owner' : Meteor.userId()});
-    }
-});
 
+Template.landingPage.helpers({
+	isFillingForm: function () {
+		return true;
+	}
+});

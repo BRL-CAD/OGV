@@ -8,11 +8,11 @@ Template.cfsUploader.events({
     {
 	 uploadFile(event, temp);
     }
+
 });
 
 function uploadFile(event, temp)
 {
-    
     FS.Utility.eachFile(event, function(file) {
 	var fileId;
 	var fsFile = new FS.File(file);
@@ -21,17 +21,23 @@ function uploadFile(event, temp)
 	fsFile.timeUploaded = new Date();
 	fsFile.about = "The model " + fsFile.name() + " was uploaded on " + fsFile.timeUploaded;
 	fsFile.thumbnail = new FS.File();
-	fsFile.lovers = [];
-	
-	ModelFiles.insert(fsFile,function(err,fileObj) {
-	    if (err) {
-		throwError(err.reason);
-	     } else {
-		throwNotification( "File Uploaded, and will appear in file manager after it's converted"); 
-		Router.go("/description/" +fileObj._id);  
-	    }
+	fsFile.viewsCount = 0;
+	var currentUser = Meteor.user();
+
+	Meteor.users.update(currentUser._id, {$inc:{"profile.countModels": 1}}, function(error, res) {
+		if (error) {
+			sAlert.error(error.reason);
+		} else {
+			sAlert.success("Updated number of models for user", {effect: 'flip', onRouteClose: false, stack: false, timeout: 4000, position: 'top'});			
+		}
 	});
-
+	ModelFiles.insert(fsFile,function(err) {
+	    if (err) {
+	    	sAlert.error("There was some error in uploading your file, please try again/later");
+	    } else {
+	    	sAlert.success("File Uploaded, and will appear in file manager after it's converted", {effect: 'flip', onRouteClose: false, stack: false, timeout: 4000, position: 'top'});
+		}	   
+	});
+	Router.go("/description/" + fsFile._id);
     });
-
 }

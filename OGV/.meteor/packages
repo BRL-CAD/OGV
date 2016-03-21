@@ -1,5 +1,10 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
 standard-app-packages
-accounts-password
 iron:router
 cfs:collection-filters
 cfs:standard-packages
@@ -10,4 +15,20 @@ bootstrap
 ishwerdas:ogv-threejs
 dbarrett:dropzonejs
 raix:ui-dropped-event
+twbs:bootstrap
+polguixe:meteor-datgui
+accounts-base
+accounts-password
+accounts-ui
+accounts-github
+meteor-platform
+accounts-google
+accounts-facebook
+mizzao:user-status
+tmeasday:publish-counts
+tmeasday:paginated-subscription
+meteorhacks:search-source
 
+juliancwirko:s-alert
+juliancwirko:s-alert-flip
+fortawesome:fontawesome

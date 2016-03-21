@@ -34,7 +34,7 @@
  * @return reset password token
  */
    
-Template.index.helpers({
+Template.models.helpers({
     resetPasswordToken: function()
     {
 	return Session.get('resetPasswordToken');
@@ -56,7 +56,7 @@ if (Accounts._resetPasswordToken) {
  * Verifies email 
  *
  * It checks if verify email token is set or not and verifies the 
- * email ID accordingly. Such token shall eb sent to user's email-id
+ * email ID accordingly. Such token shall be sent to user's email-id
  * along with a "verify your email" link.
  */ 
 if (Accounts._verifyEmailToken) {

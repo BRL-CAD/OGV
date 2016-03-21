@@ -33,57 +33,109 @@
 
 Router.configure({
     layoutTemplate:'layout',
+    notFoundTemplate: 'notFound',
     loadingTemplate:'preloader',
-    waitOn: function() { return Meteor.subscribe('modelFiles'); },
 });
-
 
 /**
  * Mapping urls to template names
  */
+
 Router.map(function() {
-    this.route('index', {
-	path : '/'	
+    this.route('landingPage', {
+    path : '/'
     });
     this.route('signUp', {path : 'sign-up'});
+    this.route('feedbackThanks', {path : 'thanks'});
     this.route('logIn', {path : 'log-in'});
     this.route('cfsUploader', {path : 'upload'});
     this.route('notVerified', {path : 'not-verified'});
     this.route('forgotPassword', {path : 'forgot-password'});
+    this.route('home', {path : 'home'});
+    
     this.route('dashboard',{
-	path: 'dashboard',
-	waitOn: function() {
-	    return Meteor.subscribe('ogvSettings');
-	}
+    path: 'dashboard',
+    waitOn: function() {
+        return Meteor.subscribe('ogvSettings');
+    }
     });
+    
     this.route('modelViewer', {
-	path: '/models/:_id',
-	data: function() 
-	{ 
-	    return ModelFiles.findOne (this.params._id);
-	},
-	action : function () {
-   	     if (this.ready()) this.render();
-	}
+    path: '/models/:_id',
+    waitOn: function() {
+        return Meteor.subscribe('modelFiles');
+    },
+    data: function() 
+    { 
+        return ModelFiles.findOne (this.params._id);
+    },
+    action : function () 
+    {
+         if (this.ready()) this.render();
+    },
+    onRun: function()
+    {
+        ModelFiles.update(this.params._id, {$inc: {viewsCount: 1}});
+        this.next();
+    }
     });
 
     this.route('modelMeta', {
-	path: '/description/:_id',
-	data: function() 
-	{
-	    return ModelFiles.findOne(this.params._id);
-	}
+    path: '/description/:_id',
+    waitOn: function() {
+        return Meteor.subscribe('modelFiles');
+    },
+    data: function() 
+    {
+        var model = ModelFiles.findOne({'owner' : Meteor.user()._id});
+        if( model == null ){
+            Router.go('/upload');
+            return;
+        } else {
+            Session.set('modelId', this.params._id);
+            return ModelFiles.findOne(this.params._id);     
+        }     
+    }
+    });
+    
+    this.route('profilePage', {
+    path: '/profile/:_id',
+    waitOn:function()
+    {
+        return [Meteor.subscribe("userProfile",this.params._id),
+                Meteor.subscribe('modelFiles')];
+        
+    },
+    data: function(){
+        var id = this.params._id;
+        personVar = Meteor.users.findOne( { _id:id } );
+        return {
+            person: personVar
+        }
+    }
     });
 
-    this.route('filemanager',{
-	path: '/my-models',
-	data: function()
-	{
-	    return ModelFiles.find({'owner' : Meteor.user()});
-	}
+    this.route('explore', {
+        path:'/explore',
+        waitOn:function(){
+            Meteor.subscribe('modelFiles');
+        }
+    });
+
+    this.route('models', {
+        path : '/newsfeed',
+        waitOn: function() {
+            Meteor.subscribe('modelFiles');
+        }
     });
 });
 
+// add the dataNotFound plugin, which is responsible for
+// rendering the dataNotFound template if your RouteController
+// data function returns a falsy value
+Router.plugin("dataNotFound",{
+    notFoundTemplate: "dataNotFound"
+});
 
 /**
  * Some routes are shown only when user has a valid email 
@@ -91,16 +143,11 @@ Router.map(function() {
  */
 var validateUser = function(pause) {
     if (Meteor.user()) {
-	if (Meteor.user().emails[0].verified) {
-	    this.next();
-	}
-	 else {
-	    this.render('notVerified');
-        }
+        this.next();
     } else if (Meteor.loggingIn()) {
-	this.render('preloader');
+    this.render('preloader');
     } else {
-	this.render('logIn');
+    this.render('logIn');
     }
 }
 
@@ -112,9 +159,9 @@ var validateUser = function(pause) {
 var actionReady = function(pause) 
 {
     if (this.ready()) {
-	this.next();
+    this.next();
     } else {
-	this.render('preloader');
+    this.render('preloader');
     }
 }
 
@@ -124,10 +171,10 @@ var actionReady = function(pause)
  */
 var loggingIn = function(pause) {
     if (Meteor.loggingIn()) {
-	this.render('preloader');
+    this.render('preloader');
     }
     else {
-	this.next();
+    this.next();
     }
 }
 
@@ -136,6 +183,6 @@ var loggingIn = function(pause) {
  * everytime a route is changed 
 */
 Router.onBeforeAction(function() { clearNotifications(); this.next(); });
-Router.onBeforeAction(validateUser,{only:['cfsUploader','filemanager','dashboard','modelMeta']});
-Router.onBeforeAction(actionReady, {only:['index', 'modelViewer']});
+Router.onBeforeAction(validateUser,{only:['cfsUploader','filemanager','dashboard','modelMeta', 'newsfeedSidebar', 'modelFeed', 'explore', 'profilePage', 'index']});
+Router.onBeforeAction(actionReady, {only:['index', 'modelViewer', 'profilePage', 'explore']});
 Router.onBeforeAction(loggingIn);

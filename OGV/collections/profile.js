@@ -30,8 +30,7 @@ ProfilePictures = new FS.Collection('profilePictures',  {
     ],
     filter: {
 	allow: {
-	    contentTypes: ['image/*'],
-	    extensions: ['jpg']
+	    contentTypes: ['image/png', 'image/jpeg', 'image/jpg']
 	}
     }	
 });
@@ -54,5 +53,8 @@ ProfilePictures.allow({
     download: function(userId, file) 
     {
     	return true;
-    }	
+    },
+    remove: function (userId, file) {
+        return userId && file.user === userId;
+    }
 });

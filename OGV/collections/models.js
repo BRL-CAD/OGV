@@ -69,13 +69,16 @@ ModelFiles.allow({
 	    return false;
 	}
     },
-    update: function(userId,file) 
+    update: function(userId,file, fieldNames, modifier) 
     {
-	return userId == file.owner;
+	   return (userId && file.owner === userId) || modifier.$inc.viewsCount !== userId;
     },
-    download: function(userId, file) 
+    download: function() 
     {
     	return true;
+    },
+    remove: function (userId, file) {
+        return userId && file.owner === userId;
     }	
 });
 
@@ -100,9 +103,12 @@ OBJFiles.allow({
     {
 	return !! userId;
     },
-    download: function(userId, file) 
+    download: function() 
     {
     	return true;
+    },
+    remove: function (userId, file) {
+        return userId && file.owner === userId;
     }	
 });
 
@@ -117,8 +123,8 @@ ThumbFiles = new FS.Collection ("thumbFiles", {
     ],
     filter: {
 	allow: {
-	    contentTypes: ['image/*'],
-	    extensions: ['jpg']
+	    contentTypes: ['image/png', 'image/jpeg', 'image/jpg']
+	    // extensions: ['jpg']
 	}
     }	
 });
@@ -132,7 +138,7 @@ ThumbFiles = new FS.Collection ("thumbFiles", {
 ThumbFiles.allow({
     insert: function(userId, file) 
     { 
-        var owner = ModelFiles.findOne(file.gFile).owner ;
+    var owner = ModelFiles.findOne(file.gFile).owner ;
 	if (userId == owner) {
   	    return true; 
 	} else {
@@ -150,8 +156,13 @@ ThumbFiles.allow({
 	}
     },
 
-    download: function(userId, file) 
+    download: function() 
     {
     	return true;
+    },
+
+    remove: function (userId, file) {
+        return true;  
     }	
+    
 });

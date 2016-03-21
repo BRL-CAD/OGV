@@ -1,0 +1,60 @@
+<template name="newsfeedSidebar">
+    <div class="newsfeed-info-section">
+    
+        <!-- About the current User -->
+        <div class="newsfeed-info-content">
+            <p class="newsfeed-userInfo"> {{myInfo.myUser.profile.name}}, that's you! </p>
+            <a href="/profile/{{ currentUser._id }}">
+                <div class="post-item user-image" style="background-image:url(&quot;{{myInfo.userImg.url}}&quot;); width:100px; height:100px;"></div>
+            </a>
+            Followers: {{myInfo.followerCount}}<br>
+            Following: {{myInfo.followingCount}}<br>
+            Models: {{myInfo.myUser.profile.countModels}}<br>
+        </div>
+        
+        <!-- About whom to follow -->
+        <div class="newsfeed-info-content">
+            <p style="color:#ccc;font-size: 15px;"> Suggested users </p>
+            {{#each suggestownerImg}}
+            <a href="/profile/{{ this.user }}">
+                <div class="post-item user-image" style="background-image:url(&quot;{{this.url}}&quot;); width:40px; height:40px;"></div>
+            </a>
+            {{/each}}
+            {{#each suggestownerInfo}}
+                <a href="/profile/{{ this._id }}">{{profile.name}}</a>
+                <button class="btn primary-btn btn-default" id="followButton" onclick="followUser('{{this._id}}')"> + Follow </button>
+            <br>
+            {{/each}}
+        </div>      
+        </div>
+    <style>
+        .primary-btn
+        {
+            width:100px;
+            font-size: 90%;
+        }
+    </style>
+
+    <script>
+        function followUser(otherId)
+        {
+            var currentUser = Meteor.user(); //user who is using OGV at that moment     
+            //updates "following" array of currentUser
+            Meteor.users.update(currentUser._id, {$addToSet: {"profile.following": otherId}}, function(error, res) {
+                if (error) {
+                throwError(error.reason);
+                } else {
+                //updates "follower" array of other user
+                Meteor.users.update(otherId, {$addToSet: {"profile.follower": currentUser._id}}, function(error, res) {
+                /*Meteor.users.update(otherId, {$addToSet: {"profile.follower": currentUser._id}}, function(error, res) {*/
+                    if (error) {
+                        throwError(error.reason);
+                    } else {
+                        throwNotification("You are now following this user");
+                    }
+                });
+                }
+            });
+        }
+    </script>
+</template>

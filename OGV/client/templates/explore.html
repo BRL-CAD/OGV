@@ -1,0 +1,90 @@
+<template name="explore">
+    <div class="col-lg-12 col-md-12 col-sm-12 ">
+        <div class="explore-heading">Explore models and users</div>
+    </div>
+	<div class="search-input container">
+		<input type="text" id="search-box" placeholder="search models here" />
+		<input type="text" id="search-user-box" placeholder="search users here" />
+	</div>
+	
+	<div class="container">
+		<nav id="cbp-spmenu-s3" style="display:none;">
+			{{> searchResult}}
+		</nav>
+		<nav id="cbp-spmenu-s4" style="display:none;">
+			{{> searchUserResult}}
+		</nav>
+	</div>
+	
+	<script>
+		$(document).ready(function() {
+		    $('#search-box').focusin(function() {
+	        	$('#cbp-spmenu-s3').show();
+    		}).add('#cbp-spmenu-s3').focusout(function() {
+        	if ( !$('#cbp-spmenu-s3').is(':focus') ) {
+	            $('#cbp-spmenu-s3').hide();
+        	}
+    		});
+
+    		$('#search-user-box').focusin(function() {
+	        	$('#cbp-spmenu-s4').show();
+    		}).add('#cbp-spmenu-s4').focusout(function() {
+        	if ( !$('#cbp-spmenu-s4').is(':focus') ) {
+	            $('#cbp-spmenu-s4').hide();
+        	}
+    		});
+		});
+	</script>
+</template>
+
+<template name="exploreResult">
+	{{#if models}}
+	{{#each models}}
+	    {{#if converted }}
+			{{> modelPost }}
+	    {{/if}}
+	{{/each}}
+    {{/if}}
+</template>
+
+<template name="searchResult">
+  <div id='search-result' class="search-result">
+    <div id="search-meta">
+      {{#if isLoading}}
+        searching ...
+      {{/if}}
+    </div>
+
+    {{#each getModels}}
+    <a href="models/{{_id}}">
+    <div class="searchModels" id="view-model-options" style="padding:2px">
+      <h4 class="name">
+        {{name}}
+      </h4>
+      <h5 style="color:black;">{{about}}</h5>
+    </div>
+	</a>
+    {{/each}}
+  </div>
+</template>
+
+<template name="searchUserResult">
+  <div id='search-result' class="search-result">
+    <div id="search-meta">
+      {{#if isLoading}}
+        searching ...
+      {{/if}}
+    </div>
+
+    {{#each getUsers}}
+    <a href="profile/{{_id}}">
+    <div class="searchUsers" id="view-model-options" style="padding:2px">
+      <h4 class="name">
+        {{profile.name}}
+      </h4>
+      <h5 style="color:black;">{{profile.bio}}</h5>
+    </div>
+	</a>
+    {{/each}}
+  </div>
+</template>

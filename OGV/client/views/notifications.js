@@ -25,21 +25,25 @@ Notifications = new Meteor.Collection(null);
 
 /**
  * throwNotification shows success messages, and are displayed
- * with green background in browser.
+ * with green background in browser.The clearNotifications function
+ * ceases to pop-up the notification again and again.
  */
 throwNotification = function(message) 
 {
     Notifications.insert({message:message, seen:false, error:false});
+    clearNotifications();    
 }
 
 
 /**
  * throwError shows a failure message, and is displayed with
- * red background in browser
+ * red background in browser. The clearNotifications function
+ * ceases to pop-up the error again and again.
  */
 throwError = function(message)
 {
     Notifications.insert({message:message, seen:false, error:true});
+    clearNotifications();
 }
 
 

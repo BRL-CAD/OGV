@@ -29,6 +29,7 @@
  * various social elements which are taken care of in other files such as
  * OGV/clients/views/social.js 
  */
+
 Template.modelFeed.helpers({
     /**
      * models helper finds all the models from the database and then sorts
@@ -36,14 +37,19 @@ Template.modelFeed.helpers({
      */
     models: function() 
     {
-	model = ModelFiles.find({}, {sort:{timeUploaded:-1}});
-	if (model.count()) {
+    /*var popularityIndex = 2;
+    var popularLove = Lovers.find({countLovers: {$gte: popularityIndex}}).fetch();
+    var popularLoveIds = _.pluck(popularLove, "postId");*/
+    var currentUser = Meteor.user();
+	/*model = ModelFiles.find( {$or: [ {owner: {$in: currentUser.profile.following} }, {_id: {$in: popularLoveIds}} ] }, {sort:{timeUploaded:-1}});*/
+	model = ModelFiles.find( {owner: {$in: currentUser.profile.following}}, {sort: {timeUploaded: -1}});
+    if (model.count()) {
 	    return model;
 	} else {
 	    return false;
 	} 
     }
-});
+}); 
 
 
 Template.modelPost.helpers({
@@ -60,9 +66,10 @@ Template.modelPost.helpers({
 	if (pic) {
 	    return picUrl;
         } else {
-	    return '/public/profile-pic.jpg';
+	    return '/public/icons/User.png';
 	}
     },
+    
     owner: function()
     {
 	return Meteor.users.findOne(this.owner);
@@ -71,9 +78,17 @@ Template.modelPost.helpers({
     
 
 Template.modelView.helpers({
+    /**
+    * returns thumbnail of the model from the user database, if there's no image 
+    * a default image is shown.
+    */
     thumbImg:function()
     {
-	thumbImage = ThumbFiles.findOne({gFile:this._id});
-	return thumbImage;  
+    	thumbImage = ThumbFiles.findOne({gFile:this._id});
+        if (thumbImage) {
+            return thumbImage;
+        } else {
+            // return test;
+        }  
     }
 });

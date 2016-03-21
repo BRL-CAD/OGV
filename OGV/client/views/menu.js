@@ -27,9 +27,21 @@ Template.menu.events({
     'click #log-out':function(e,t)
     {
 	Meteor.logout(function() {
-	     throwError('Bye!, See you back soon');
+	    sAlert.info('Bye!, See you back soon', {effect: 'flip', onRouteClose: false, stack: false, timeout: 4000, position: 'top'});     
+		Router.go("/");
 	});
 	
 	return false;
     }
 });
+
+Template.menu.helpers({
+	/**
+	* returning logged in user's information 
+	*/
+	userId: function()
+	{
+		var currentUser = Meteor.user();
+		return currentUser._id;
+	}
+})

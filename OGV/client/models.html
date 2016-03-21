@@ -1,10 +1,7 @@
-<template name = "index">
+<template name = "models">
 	{{#unless resetPasswordToken}}
-		
-			{{> modelFeed}}
-
+		{{> modelFeed}}
 	{{else}}
 		{{> resetPassword}}
-	{{/unless}}
-	
+	{{/unless}}	
 </template>

@@ -1,0 +1,70 @@
+<template name="profilePage">
+    <div class="container profilePageTop">
+    <div class="row-fluid">
+        <div class="space"></div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="row image-row">
+                <a href="/profile/{{ person._id }}">
+                    <img class="user-image user-image-icon" style="background-image:url(&quot;{{userImg}}&quot;);">
+                </a>
+            </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">            
+                <h2>{{ person.profile.name }}</h2>
+                <strong>Models: {{person.profile.countModels}}</strong>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <strong>Followers: {{followerCount}}</strong>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <strong>Following: {{followingCount}}</strong><br>
+                
+                {{#if urlUser}}
+                    {{#if currentFollowsThis}}
+                        <button class="btn primary-btn btn-default" id="unfollowButton" onmouseover="changeText()" onmouseout="changeback()">Following</button>
+                    {{else}}
+                        <button class="btn primary-btn btn-default" id="followButton"> + Follow </button>
+                    {{/if}}
+                {{/if}}
+                <br>
+                <br>
+                <h4><strong>{{ person.profile.bio }} </strong></h4>
+                <strong>Here Since:</strong> <em>{{ person.createdAt }}</em> <br>
+            </div>
+        </div>
+    </div>    
+    </div>
+
+    <div>
+        <hr>
+        {{> profileModelFeed}}
+    </div>
+
+    <script>
+        function changeText()
+        {
+            var display = document.getElementById('unfollowButton');
+            display.innerHTML = "";
+            display.innerHTML = "Unfollow";
+        }
+          function changeback()
+        {
+            var display = document.getElementById('unfollowButton');
+            display.innerHTML = "";
+            display.innerHTML = "Following";
+        }
+    </script>
+</template>
+
+<template name="profileModelFeed">
+    <div class="profile-feed-wrapper">
+    {{#if models}}
+    {{#each models}}
+        {{#if converted }}
+            {{> modelPost }}
+        {{/if}}
+    {{/each}}
+    {{else}}
+    <h3>{{user.profile.name}} has no uploaded models</h3>
+    {{/if}}
+    </div>
+</template>

@@ -1,37 +1,77 @@
 <template name="cfsUploader">
-	<h2> Upload File </h2>
-
-	<p class = "help-text"> Add .g file that you want to upload </p>
-	<input type="file" class="form-control" id="fileInput" accept=".g"/>
-
-
-	<div id="dropzone" class="dropzone">
-		<div class="dropzone-text">Drag and Drop your model here to upload</div>
-        </div>
+	<div class="container">
+		<h2 class="upload-text"> Upload File </h2>
+		<p class = "help-text"> Add .g file that you want to upload </p>
+		<input type="file" class="form-control" id="fileInput" accept=".g"/><br />
+		<div id="dropzone" class="dropzone">
+			<div class="dropzone-text">Drag and Drop your model here to upload</div>
+	    </div>
+    </div>
 </template>
 
 
 <template name="modelMeta">
+<div class="modelMeta">
+ </div>
 	<div class="secondary-container" id="uploader-container">
 		<form action=" " method="post" class="secondary-form" id="uploader-form">
-						
-						
-			<label for="filename" class ="input-head"> Filename </label>
+
+			<label for="filename" class ="input-head"><strong> Filename </strong></label>
 			<p class ="help-text"> What you want to be known as around </p>	
 			<input class="form-control filename" id="desc-filename" name="filename" value="{{ name }}" type="text">
 
-			<label for="uplaoder-about" class ="input-head"> About Model: </label>
+			<label for="uplaoder-about" class ="input-head"> <strong>About Model:</strong> </label>
 			<p class = "help-text"> Provide a short description about your model </p>
-			<textarea class="form-control secondary-textarea" id = "desc-about" cols=25 >{{ about }}</textarea>
+			<textarea class="form-control secondary-textarea" id = "desc-about" cols=25 maxlength="150" onkeyup="textCounter(this,'counter',150);">{{ about }}</textarea>
+			<p id="counter" style="color:red;font-size:10px">*150 characters left</p>
 
-			
-			<label for="filename" class ="input-head"> Model-Image </label>
+			<label for="filename" class ="input-head"><strong> Model-Image</strong> </label>
 			<p class ="help-text"> An image that will be used as a thumbnail for your model, the preferred size is 500 X 300 </p>	
 			<input class="form-control model-thumb" id="desc-model-thumb" name="modelThumb" type="file">
 
-			<input id = "model-id" type = "hidden" value = "{{ _id }}">
+			<div id="checkform-body">
+			<label for="uploader-about" class ="input-head"><strong> Category </strong></label><br>			
+			<em><p style="font-size: 15px">
+			{{#with modelCategory}}
+            	{{#each categories}}
+            		{{.}}, 
+            	{{/each}}
+			{{/with}}
+			</p></em>
+				<div id="checkform-left">
+					<input id="check1" type="checkbox" name="category" value="Animal" form = "uploader-form">Animal<br>
+					<input id="check2" type="checkbox" name="category" value="Architecture" form = "uploader-form">Architecture<br>
+					<input id="check3" type="checkbox" name="category" value="Character" form = "uploader-form">Character <br>
+					<input id="check4" type="checkbox" name="category" value="Electronics" form = "uploader-form">Electronics <br>
+					<input id="check5" type="checkbox" name="category" value="Games" form = "uploader-form">Games <br>
+					<input id="check6" type="checkbox" name="category" value="Miscellaneous" form = "uploader-form">Miscellaneous <br>
+				</div>
+				<div id="checkform-right">
+					<input id="check7" type="checkbox" name="category" value="Machines" form = "uploader-form">Machines <br>
+					<input id="check8" type="checkbox" name="category" value="Scenes" form = "uploader-form">Scenes <br>
+					<input id="check9" type="checkbox" name="category" value="Science" form = "uploader-form">Science <br>
+					<input id="check10" type="checkbox" name="category" value="Vegetal" form = "uploader-form">Vegetal <br>
+					<input id="check11" type="checkbox" name="category" value="Vehicles" form = "uploader-form">Vehicles <br>
+					<input id="check12" type="checkbox" name="category" value="Weapons" form = "uploader-form">Weapons <br>
+				</div>
+			</div>
 
+			<input id = "model-id" type = "hidden" value = "{{ _id }}">
 			<button class="btn primary-btn btn-default" type="submit" id="save-btn"> Save </button>
 		</form>
 	</div>
+
+	<script>
+	function textCounter(field,field2,maxlimit)
+	{
+ 		var countfield = document.getElementById(field2);
+ 		if ( field.value.length > maxlimit ) {
+  			field.value = field.value.substring( 0, maxlimit );
+  			return false;
+ 		} else {
+  			countfield.innerHTML = "*"+(maxlimit - field.value.length)+" characters left";
+ 		}
+	}
+	</script>
+	
 </template>

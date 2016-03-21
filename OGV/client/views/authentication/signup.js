@@ -27,29 +27,41 @@ Template.signUp.events({
     {
 	e.preventDefault();
 
-        var signUpForm = $(e.currentTarget),
-	    email = trimInput(signUpForm.find('#sign-up-email').val().toLowerCase()),
-	    password = signUpForm.find('#sign-up-password').val(),
-	    passwordConfirm = signUpForm.find('#sign-up-password-confirm').val(),
-	    username = signUpForm.find('#sign-up-username').val();
+    var signUpForm = $(e.currentTarget),
+    email = trimInput(signUpForm.find('#sign-up-email').val().toLowerCase()),
+    password = signUpForm.find('#sign-up-password').val(),
+    passwordConfirm = signUpForm.find('#sign-up-password-confirm').val(),
+    username = signUpForm.find('#sign-up-username').val();
 
-	    /**
-	     * Validates the sign up form fields and gives errors if any 
-	     */
+    /**
+     * Validates the sign up form fields and gives errors if any 
+     */
 
-	    if (isNotEmpty(email) && 
+    if (isNotEmpty(email) && 
+	isNotEmpty(password) &&
+	isNotEmpty(username) &&
+	isEmail(email) &&
+	areValidPasswords(password, passwordConfirm)) {
+        Accounts.createUser({email:email, password:password, profile: { name: username ,bio: "Greatest 3d modeller on the planet" }},function(err){
+	    if (err) {
+		throwError(err.reason);
+	    } else {
+		throwNotification('Congrats! Check your inbox at ' + email + ' to verify it');
+	  /*  if (isNotEmpty(email) && 
 		isNotEmpty(password) &&
 		isNotEmpty(username) &&
 		isEmail(email) &&
 		areValidPasswords(password, passwordConfirm)) {
 	        Accounts.createUser({email:email, password:password, profile: { name: username ,bio: "Greatest 3d modeller on the planet" }},function(err){
 		    if (err) {
-			throwError(err.reason);
+		    sAlert.error(err.reason, {effect: 'flip', onRouteClose: false, stack: false, timeout: 3000, position: 'top'});
 		    } else {
-			throwNotification('Congrats! Check your inbox at ' + email + ' to verify it');
+		    sAlert.success('Congrats! Check your inbox at ' + email + ' to verify it', {effect: 'flip', onRouteClose: false, stack: false, timeout: 3000, position: 'top'});
 		    }
-		});
+		});*/
 	    }
+	});
+    }
 	return false;	
     },
 });	

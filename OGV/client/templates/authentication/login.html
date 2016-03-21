@@ -2,13 +2,21 @@
 	{{#unless currentUser}}
 	<div class="primary-container" id="log-in-container">
 		{{> primaryBranding }}
-		<form action="/login" class=" primary-form log-in-form" id="log-in-form" method="post">
+		<form action="/login" class="primary-form log-in-form" id="log-in-form" method="post">
 			<input class="primary-input email" id="log-in-email" type="email" name="email" placeholder="your email address here" >
 			<input class= "primary-input password" id="log-in-password" type="password" name="password" placeholder="password">
 			<button class="btn btn-default primary-input primary-btn" type="submit"> Log In </button>
 		</form>
-		<a class = "meta-links" id="show-forgot-password" href="/forgot-password" > Forgot Password </a>
-		<a class = "meta-links" id="show-sign-up" href="/sign-up" > Sign Up </a>
+		<!-- Brand Icons -->
+		<div align="center">
+        	<a href="#"><i id="loginGoogle" class="googleIcon fa fa-google-plus-square fa-3x"></i></a>&nbsp;
+        	<a href="#"><i id="loginFacebook" class="facebookIcon fa fa-facebook-square fa-3x"></i></a>&nbsp;
+        	<a href="#"><i id="loginGithub" class="githubIcon fa fa-github-square fa-3x"></i></a>
+        	<!-- Uncomment the line below while configuring 3rd party login -->
+        	<!-- {{> loginButtons}} -->
+			<a class="meta-links" id="show-sign-up" href="/sign-up">Sign Up</a>			
+			<a class="meta-links" id="show-forgot-password" href="/forgot-password">Forgot Password</a>	
+		</div>
 	</div>
 	{{else}}
 		{{>modelFeed}}

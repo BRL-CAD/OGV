@@ -1,16 +1,18 @@
 <template name = "menu">
 	<header class = "universal-header">
-		<div class = "page-container">
+		<div class = "page-container container">
 			<a class="logo" id="header-logo" href="/"> OGV </a>
-			<span class = "right-menu">
-			<a class="rm-item" id="dashboard-icon" title="Settings" href ="/dashboard"> <img src="/icons/Settings.png" width="30px" height="30px"/></a>  
-			<a class="rm-item" id="my-models-icon" title="My models" href ="/my-models"> <img src="/icons/Folder-Cube.png" width="30px" height="30px"/></a>  
-			<a class="rm-item" id="upload-icon" title="Upload" href ="/upload"> <img src="/icons/upload.png" width="30px" height="30px"/></a>  
-		{{#unless currentUser}}
-			<a class="rm-item rm-log-in" id="log-in" href="/log-in">Login</a>
-		{{else}}
-			<button class="rm-item rm-log-out" id="log-out" title="Log out"><img src="/icons/logout.png" width="30px" height="30px"></button>
-		{{/unless}}
+			<span class = "right-menu">			
+				<a class="rm-item" id="upload-icon" title="Upload" href ="/upload"> <img src="/icons/upload.png" width="30px" height="30px"/></a>
+				<a class="rm-item" id="dashboard-icon" title="Settings" href ="/dashboard"> <img src="/icons/Settings.png" width="30px" height="30px"/></a>   
+				{{#unless currentUser}}
+					<a class="rm-item rm-log-in" id="log-in" href="/log-in">Login</a>
+				{{else}}
+					<a class="rm-item" id="models-icon" title="Models" href ="/newsfeed"> <img src="/icons/collection.png" width="30px" height="30px"/></a>  
+					<a href="/explore" class="rm-item" id="upload-icon" title="Explore models and users"><img src="/icons/explore.png" width="33px" height="33px"/></a>
+					<a href="/profile/{{ userId }}">{{ currentUser.profile.name }}</a>
+					<button class="rm-item rm-log-out" id="log-out" title="Log out"><img src="/icons/logout.png" width="30px" height="30px"></button>	
+				{{/unless}}
 			</span>
 		</div>	
 	</header>

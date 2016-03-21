@@ -3,22 +3,25 @@
 		<form action="/dashboard" class="secondary-form" id="dash-user-form" method="post">
 		
 			<h3 class="secondary-form-head"> User Settings </h3>
-										
+			
 			<label for="user-bio" class ="input-head"> Short Bio </label>
-			<textarea class="form-control" id="dash-short-bio" name="shortBio"> {{ currentUser.profile.bio }} </textarea>
+			<textarea class="form-control" id="dash-short-bio" name="shortBio" maxlength="150" onkeyup="textCounter(this,'counter',150);" > {{ currentUser.profile.bio }} </textarea>
+			<p id="counter" style="color:red;font-size:10px">*150 characters left</p>
+
 
 			<label for="username" class ="input-head"> Username </label>
 			<p class ="help-text"> What you want to be known as around </p>	
 			<input class="form-control username" id="dash-username" name="username" value = " {{ currentUser.profile.name }}"  type="text">
 
-			
 			<label for="profile-pic" class ="input-head"> Profile Pic </label>
 			<p class ="help-text"> Upload a photo of size not more than 300 X 300 </p>
-			<div class = "user-profile-pic" style=" background: url({{profilePic}})" > </div> 	
+			<div class="post-item user-image" style="background-image:url(&quot;{{profilePic}}&quot;); width:200px; height:200px;"></div>
 			<input class="form-control profile-pic" id="dash-profile-pic" name="profilePic" type="file">
 			
-			<button class="btn primary-btn btn-default" type="submit"> Save User Settings </button>	
+			<button class="btn primary-btn btn-default" type="submit"> Save User Settings </button>	<br><br>
 		</form>
+
+
 	</div>
     {{#if isInRole 'admin' }}
 		<form action="/dashboard" class="secondary-form" id="dash-admin-form" method="post">
@@ -51,5 +54,18 @@
 
 			<button class="btn primary-btn btn-default" type="submit"> Save Admin Settings </button>
 		</form>
-      {{/if}}
+    {{/if}}
+
+	<script>
+	function textCounter(field,field2,maxlimit)
+	{
+ 		var countfield = document.getElementById(field2);
+ 		if ( field.value.length > maxlimit ) {
+  			field.value = field.value.substring( 0, maxlimit );
+  			return false;
+ 		} else {
+  			countfield.innerHTML = "*"+(maxlimit - field.value.length)+" characters left";
+ 		}
+	}
+	</script>
 </template>

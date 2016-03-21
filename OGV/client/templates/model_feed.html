@@ -1,13 +1,18 @@
 <template name = "modelFeed">
-    <div class="feed-wrapper">
+    {{> newsfeedSidebar}}
+    <!--<div class="feed-wrapper"> -->
+    <br><br><br>
+    <h1 style="margin: 10px auto 20px 13px">Hi, {{currentUser.profile.name}}!</h1> 
+    <div class="container feed-wrapper">
     {{#if models}}
 	{{#each models}}
 	    {{#if converted }}
-		{{> modelPost }}
+			{{> modelPost }}
 	    {{/if}}
 	{{/each}}
+	<button class="btn primary-btn btn-default" id="loadMoreButton" style="margin: 10px auto auto 250px"> Load more . . . </button>
     {{else}}
-	<h3>OGV is hungry, <a href="/upload">feed some models</a></h3>
+	<h3>You seem to be new here, your newsfeed looks empty</h3>
     {{/if}}
     </div>
 </template>
@@ -16,31 +21,44 @@
 <template name ="modelPost">
     <div class="feed-item model-post">
       <div class="post-section post-sidebar user-info">
-		<div class="post-item user-image" style="background:url('{{userImg}}');"></div>
+		<a href="/profile/{{ owner._id }}">
+			<div class="post-item user-image" style="background:url('{{userImg}}');height:100px;width:100px;border-radius:10%"></div>
+		</a>
 		<div class="post-item post-meta user-meta"></div>
       </div>
 	    
      <div class="post-section post-content model-info">
-		<p class="post-item post-text user-name"> {{ owner.profile.name }} posted {{ name }}</p>
+		<p class="post-item post-text user-name"> 
+			<a href="/profile/{{ owner._id }}"> {{ owner.profile.name }}</a> posted {{ name }} <br>on <em>{{uploadedAt}}</em>
+		</p>
 		<div class="post-item">
-	        {{> modelView }}	
-		<p class="post-text post-subitem"> {{ about }} </p>
+	        {{> modelView }}
+	        <div id = "editModelButtons">
+	            <a href="#"><i id="deleteModel" class="fa fa-cog fa-minus-square-o fa-2x" title="Delete model"></i></a>&nbsp;&nbsp;&nbsp;
+	            <a href ="/description/{{_id}}"><i class="fa fa-cog fa-cogs fa-2x" title="Change model settings"></i></a>
+	        </div>	        	
+			<p class="post-text post-subitem"> {{ about }} </p>
 		</div>
         <div class="post-item love-wrapper">
             {{> lovemeter }}
         </div>
+        <img src="/icons/views.png" style="height:45px;width:35px">
+		    {{this.viewsCount}}
         <div class="post-item comments-wrapper">
-        {{> comments }}    
+        	{{> comments }}    
         </div>
      </div>
      <span class="clear"></span>
 </div>
-	    
-	     
-
 </template>
+
+
 <template name="modelView">
 	<div class="post-item model-preview" style="background-image:url(&quot;{{thumbImg.url}}&quot;);">
-		<a class = " model-preview-link" href="/models/{{_id}}"><h2 class="post-subitem model-name"><span class="model-link-text">{{ name }}</span></h2></a>
+		<a class = " model-preview-link" href="/models/{{_id}}">
+			<h2 class="post-subitem model-name">
+				<span class="model-link-text">{{ name }}</span>
+			</h2>
+		</a>
 	</div>
 </template>
