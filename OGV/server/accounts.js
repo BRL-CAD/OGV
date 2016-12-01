@@ -22,13 +22,13 @@
  *  @brief file for email validation configuration
  *
  *  This file  serves two purposes. Firstly it contains configuration
- *  regarding sending email for the purpose of validating the new 
- *  registered user. After verification  one can upload their models, 
+ *  regarding sending email for the purpose of validating the new
+ *  registered user. After verification  one can upload their models,
  *  and use OGV.
  */
 
 /**
- * Create a test user without admin roles and a super user with 
+ * Create a test user without admin roles and a super user with
  * admin roles on a fresh install (when number of users is zero)
  */
 Accounts.config({
@@ -45,7 +45,7 @@ if (Meteor.users.find().fetch().length === 0) {
 	var Bio = "greatest 3d modeller on the planet";
     _.each(users, function (userData) {
 	var id,
-	    user; 
+	    user;
 
 	id = Accounts.createUser({
 	    email: userData.email,
@@ -57,10 +57,10 @@ if (Meteor.users.find().fetch().length === 0) {
 	Meteor.users.update({_id: id}, {$set:{'emails.0.verified': true}});
 
 	Roles.addUsersToRoles(id, userData.roles);
-    
+
     });
 
-} 
+}
 
 Accounts.onCreateUser(function(options, user) {
     var followingArray = [];
@@ -79,26 +79,26 @@ Accounts.onCreateUser(function(options, user) {
 });
 
 /*Meteor.users.allow({
-    update: function(userId, user, fields) 
-    {   
-        if (!fields.isEqualTo(['profile.following', 'profile.follower'])) { 
-            return false; 
+    update: function(userId, user, fields)
+    {
+        if (!fields.isEqualTo(['profile.following', 'profile.follower'])) {
+            return false;
         } else {
             return true;
         }
-    }    
+    }
 });
 */
 
 
 /**
-*  Need to allow the users to update only the follwers array of other users
+*  Need to allow the users to update only the followers array of other users
 */
 Meteor.users.allow({
-    update: function(userId, user, fieldNames, modifier) 
+    update: function(userId, user, fieldNames, modifier)
     {
         return true;
-    }    
+    }
 });
 
 /**
@@ -111,4 +111,3 @@ Meteor.setInterval(function() {
         Meteor.users.remove({_id: user._id}, true);
     });
 }, (3600000 * hrs));
-
