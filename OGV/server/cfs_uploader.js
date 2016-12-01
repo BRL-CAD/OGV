@@ -27,13 +27,13 @@
 
 Meteor.methods({
     /**
-     * Converts g into obj iles 
+     * Converts g into obj iles
      */
     convertFile:function(fileId)
     {
 	/**
 	 * 3 NPM packages sys, fs and child_process
-	 * are required for executing shell commands 
+	 * are required for executing shell commands
 	 * from within node
 	 */
 	var sys = Npm.require('sys'),
@@ -49,8 +49,8 @@ Meteor.methods({
 	    mgedPath = settings.mgedPath,
 	    g_objPath = settings.gobjPath,
 	    cmd = mgedPath + " -c  " + filePath +" ls -a 2>&1",
-	    uploadDirPath = filePath.substring(0, filePath.lastIndexOf("/")); 
-	
+	    uploadDirPath = filePath.substring(0, filePath.lastIndexOf("/"));
+
 	/**
 	 * exec() function executes system commands and Meteor.BindEnvironment binds it
 	 * meteor environment so that they can share each other's variables
@@ -64,7 +64,7 @@ Meteor.methods({
 		objects = stdout.split(" ");
 		console.log(objects);
 		sys.print('stderr' + stderr);
-	   
+
 		if (error != null) {
 		    console.log('exec error: ' + error);
 	    	} else {
@@ -81,33 +81,33 @@ Meteor.methods({
 			        } else {
 				    console.log("File has been converted" + objects[i] + i);
 				    objFS = new FS.File(objPath[i]);
-				    objFS.gFile = fileId;				
+				    objFS.gFile = fileId;
 				    OBJFiles.insert(objFS, function (err, objFile) {
-			    	        if (err) { 
-					    console.log(err); 
+			    	        if (err) {
+					    console.log(err);
 				        } else {
 					     counter = counter + 1;
-					     var convertPercentage =  (counter/(objects.length - 2)) *100; 
+					     var convertPercentage =  (counter/(objects.length - 2)) *100;
 					     console.log("done " + convertPercentage + " %");
 					    /**
-					     * The acceptance rate for succesfull conversion is at least 70%
-					     * Any model with conversion less than that is not said to be 
+					     * The acceptance rate for successful conversion is at least 70%
+					     * Any model with conversion less than that is not said to be
 					     * converted and is not shown across the website.
 					     */
-					     if (convertPercentage > 70) { 
+					     if (convertPercentage > 70) {
 						modelObj.update({$set: {converted: true}});
 						console.log(modelObj);
 					    }
 					}
-				    });	
-			        }    
+				    });
+			        }
 	   	            }));
-		        })(i);	
+		        })(i);
 		    }
 
-	    }       
+	    }
 	}));
     }
 
 
-});		
+});

@@ -22,7 +22,7 @@
  * @file OGV/lib/router.js
  * @brief connects URLs to views, handles routing of the application
  *
- * Meteor is basically meant for single page apps but that does not 
+ * Meteor is basically meant for single page apps but that does not
  * mean that we cannot have urls to bookmark our favorite models. Using
  * package named Iron Router, routing of OGV is handled.
  */
@@ -52,24 +52,24 @@ Router.map(function() {
     this.route('notVerified', {path : 'not-verified'});
     this.route('forgotPassword', {path : 'forgot-password'});
     this.route('home', {path : 'home'});
-    
+
     this.route('dashboard',{
     path: 'dashboard',
     waitOn: function() {
         return Meteor.subscribe('ogvSettings');
     }
     });
-    
+
     this.route('modelViewer', {
 	    path: '/models/:_id/:_share?',
     waitOn: function() {
         return Meteor.subscribe('modelFiles');
     },
-    data: function() 
-    { 
+    data: function()
+    {
         return ModelFiles.findOne (this.params._id);
     },
-    action : function () 
+    action : function ()
     {
          if (this.ready()) this.render();
     },
@@ -85,7 +85,7 @@ Router.map(function() {
     waitOn: function() {
         return Meteor.subscribe('modelFiles');
     },
-    data: function() 
+    data: function()
     {
         var model = ModelFiles.findOne({'owner' : Meteor.user()._id});
         if( model == null ){
@@ -93,18 +93,18 @@ Router.map(function() {
             return;
         } else {
             Session.set('modelId', this.params._id);
-            return ModelFiles.findOne(this.params._id);     
-        }     
+            return ModelFiles.findOne(this.params._id);
+        }
     }
     });
-    
+
     this.route('profilePage', {
     path: '/profile/:_id',
     waitOn:function()
     {
         return [Meteor.subscribe("userProfile",this.params._id),
                 Meteor.subscribe('modelFiles')];
-        
+
     },
     data: function(){
         var id = this.params._id;
@@ -138,7 +138,7 @@ Router.plugin("dataNotFound",{
 });
 
 /**
- * Some routes are shown only when user has a valid email 
+ * Some routes are shown only when user has a valid email
  * address
  */
 var validateUser = function(pause) {
@@ -154,9 +154,9 @@ var validateUser = function(pause) {
 
 /**
  * actionReady shows a route only after it has fetched all
- * the required data. 
+ * the required data.
  */
-var actionReady = function(pause) 
+var actionReady = function(pause)
 {
     if (this.ready()) {
     this.next();
@@ -179,8 +179,8 @@ var loggingIn = function(pause) {
 }
 
 /**
- * Remove notifactions and error messages that have been seen
- * everytime a route is changed 
+ * Remove notifictions and error messages that have been seen
+ * everytime a route is changed
 */
 
 Router.onBeforeAction(validateUser,{only:['cfsUploader','filemanager','dashboard','modelMeta', 'newsfeedSidebar', 'models', 'modelFeed', 'explore', 'profilePage', 'index']});

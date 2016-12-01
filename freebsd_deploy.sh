@@ -1,7 +1,7 @@
 # Author Divam Gupta
 # github.com/divamgupta
 # This script is used to deploy OGV to a freebsd server
-# It is recomended run the commands indivitually by copy pasting into the terminal
+# It is recommended run the commands individually by copy pasting into the terminal
 
 
 cd /usr/ports/www/node-devel/
@@ -28,10 +28,3 @@ git clone https://github.com/BRL-CAD/OGV-meteor
 
 cd OGV-meteor/OGV
 ../../meteor/meteor
-
-
-
-
-
-
-
