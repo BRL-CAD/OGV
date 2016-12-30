@@ -1,40 +1,41 @@
 <template name="cfsUploader">
 	<div class="container">
-		<h2 class="upload-text"> Upload File </h2>
-		<p class = "help-text"> Add .g file that you want to upload </p>
-		<input type="file" class="form-control" id="fileInput" accept=".g"/><br />
-		<div id="dropzone" class="dropzone">
-			<div class="dropzone-text">Drag and Drop your model here to upload</div>
-	    </div>
+		<div class="upload-container">
+			<h2 class="upload-text"> Upload Model </h2>
+			<p class = "help-text" style="margin-bottom: 10px; margin-top: 0;"> Add .g file containing your model </p>
+			<div id="dropzone" class="dropzone">
+				<div class="dropzone-text">Drag your .g file here</div>
+				<div style="text-align: center; margin-top: 10px; margin-bottom: 10px;">OR</div>
+				<!-- Code below customizes the default "choose file" widget. (Solution from http://stackoverflow.com/a/25825731)  -->
+				<label class="custom-file-upload">
+					Browse...
+					<input type="file" class="form-control" id="fileInput" accept=".g" style="display: none"/>
+				</label>
+	  	</div>
     </div>
+	</div>
 </template>
 
 
 <template name="modelMeta">
-<div class="modelMeta">
+<div class="modelMeta" style="padding-top: 25px;">
  </div>
 	<div class="secondary-container" id="uploader-container">
 		<form action=" " method="post" class="secondary-form" id="uploader-form">
-
-			<label for="filename" class ="input-head"><strong> Filename </strong></label>
-			<p class ="help-text"> What you want to be known as around </p>	
-			<input class="form-control filename" id="desc-filename" name="filename" value="{{ name }}" type="text">
-
-			<label for="uplaoder-about" class ="input-head"> <strong>About Model:</strong> </label>
-			<p class = "help-text"> Provide a short description about your model </p>
+			<h2 style="margin-bottom: 20px;">{{ name }}</h2>
+			<label for="filename" class="input-head"><strong> Display Name </strong></label>
+			<p class="help-text"> Name that will be displayed to the public </p>
+			<input class="form-control filename" id="desc-filename" name="filename" value="{{ name }}" type="text" style="margin-bottom: 15px;">
+			<label for="uplaoder-about" class ="input-head"> <strong>Description</strong> </label>
 			<textarea class="form-control secondary-textarea" id = "desc-about" cols=25 maxlength="150" onkeyup="textCounter(this,'counter',150);">{{ about }}</textarea>
-			<p id="counter" style="color:red;font-size:10px">*150 characters left</p>
-
-			<label for="filename" class ="input-head"><strong> Model-Image</strong> </label>
-			<p class ="help-text"> An image that will be used as a thumbnail for your model, the preferred size is 500 X 300 </p>	
-			<input class="form-control model-thumb" id="desc-model-thumb" name="modelThumb" type="file">
+			<p id="counter" style="color:gray;font-size:11px">150 characters left</p>
 
 			<div id="checkform-body">
-			<label for="uploader-about" class ="input-head"><strong> Category </strong></label><br>			
+			<label for="uploader-about" class ="input-head" style="margin-bottom: 0; margin-top: 5px;"><strong> Category </strong></label><br>
 			<em><p style="font-size: 15px">
 			{{#with modelCategory}}
             	{{#each categories}}
-            		{{.}}, 
+            		{{.}},
             	{{/each}}
 			{{/with}}
 			</p></em>
@@ -57,7 +58,7 @@
 			</div>
 
 			<input id = "model-id" type = "hidden" value = "{{ _id }}">
-			<button class="btn primary-btn btn-default" type="submit" id="save-btn"> Save </button>
+			<button class="btn primary-btn btn-default" type="submit" id="save-btn"> Upload </button>
 		</form>
 	</div>
 
@@ -69,9 +70,9 @@
   			field.value = field.value.substring( 0, maxlimit );
   			return false;
  		} else {
-  			countfield.innerHTML = "*"+(maxlimit - field.value.length)+" characters left";
+  			countfield.innerHTML = (maxlimit - field.value.length)+" characters left";
  		}
 	}
 	</script>
-	
+
 </template>
