@@ -263,7 +263,7 @@ textarea {
 
 .secondary-form {
     max-width: 400px;
-    margin:30px 30px;
+    margin:55px 30px;
     margin:auto;
     display:block;
 }
@@ -276,6 +276,17 @@ textarea {
     font-size: 14px;
     font-style: italic;
     color: #B6B6B4;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+.model-meta-title-text {
+  margin-bottom: 10px;
+}
+
+.input-head {
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 .primary-btn {
@@ -1710,11 +1721,13 @@ svg {
 }
 
 #checkform-left {
+  margin-top: -8px;
     width:50%;
     float: left;
 }
 
 #checkform-right {
+  margin-top: -8px;
     width:50%;
     float: right;
     margin-bottom:25px;

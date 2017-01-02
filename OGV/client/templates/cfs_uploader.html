@@ -1,11 +1,11 @@
 <template name="cfsUploader">
 	<div class="container">
 		<div class="upload-container">
-			<h2 class="upload-text"> Upload Model </h2>
-			<p class = "help-text" style="margin-bottom: 10px; margin-top: 0;"> Add .g file containing your model </p>
+			<h2 class="upload-text"> Upload File </h2>
+			<p class = "help-text"> Add .g file containing your model </p>
 			<div id="dropzone" class="dropzone">
 				<div class="dropzone-text">Drag your .g file here</div>
-				<div style="text-align: center; margin-top: 10px; margin-bottom: 10px;">OR</div>
+				<div style="text-align: center; margin: 10px;">OR</div>
 				<!-- Code below customizes the default "choose file" widget. (Solution from http://stackoverflow.com/a/25825731)  -->
 				<label class="custom-file-upload">
 					Browse...
@@ -18,20 +18,20 @@
 
 
 <template name="modelMeta">
-<div class="modelMeta" style="padding-top: 25px;">
+<div class="modelMeta">
  </div>
 	<div class="secondary-container" id="uploader-container">
-		<form action=" " method="post" class="secondary-form" id="uploader-form">
-			<h2 style="margin-bottom: 20px;">{{ name }}</h2>
+		<form action="" method="post" class="secondary-form" id="uploader-form">
+			<h2 class="model-meta-title-text">{{ name }}</h2>
 			<label for="filename" class="input-head"><strong> Display Name </strong></label>
 			<p class="help-text"> Name that will be displayed to the public </p>
-			<input class="form-control filename" id="desc-filename" name="filename" value="{{ name }}" type="text" style="margin-bottom: 15px;">
+			<input class="form-control filename" id="desc-filename" name="filename" value="{{ name }}" type="text">
 			<label for="uplaoder-about" class ="input-head"> <strong>Description</strong> </label>
 			<textarea class="form-control secondary-textarea" id = "desc-about" cols=25 maxlength="150" onkeyup="textCounter(this,'counter',150);">{{ about }}</textarea>
 			<p id="counter" style="color:gray;font-size:11px">150 characters left</p>
 
 			<div id="checkform-body">
-			<label for="uploader-about" class ="input-head" style="margin-bottom: 0; margin-top: 5px;"><strong> Category </strong></label><br>
+			<label for="uploader-about" class ="input-head"><strong> Category </strong></label><br>
 			<em><p style="font-size: 15px">
 			{{#with modelCategory}}
             	{{#each categories}}
