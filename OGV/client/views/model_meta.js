@@ -77,10 +77,6 @@ Template.modelMeta.events({
 	    }
 	});
 	}
-	/*cPercent = Meteor.call('convertPercent');
-	console.log("######");
-	console.log(cPercent);
-	console.log("######");*/
 
 	var uploadedModel = ModelFiles.findOne(modelId);
 	if( uploadedModel.converted ){
