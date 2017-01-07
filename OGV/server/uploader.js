@@ -46,31 +46,6 @@ Meteor.methods({
 		    model._id = Models.insert(model);
 		}
 		
-		/*fs.mkdirSync(uploadDirPath);
-		console.log("directory created");
-		fs.writeFileSync(uploadFilePath, blob, encoding);
-		fileUploaded = true;
-	    } else if (fs.existsSync(uploadFilePath)) {
-	    	throw (new Meteor.Error(409, 'File Already Exists'));
-	    } else {
-		fs.writeFileSync(uploadFilePath, blob, encoding);
-		fileUploaded = true;
-	    }	
-         } else {
-	     throw (new Meteor.Error (409,'File type not supported'));
-	 }	
-	
-	if (fileUploaded) {
-	    var model = {
-	    	name: name,
-	    	userId: userId,
-		path: uploadFilePath,
-	  	lovemeter: 0,
-		lovers: []
-	    }
-	    model._id = Models.insert(model);
-	}
-	*/
 	function gToObj()
 	{
 	    var objects;
