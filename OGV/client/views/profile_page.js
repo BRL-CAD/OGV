@@ -159,15 +159,12 @@ Template.profileModelFeed.helpers({
 	var isFollower = $.inArray(Meteor.userId(), followers);
 	if(Meteor.userId() == urlId){
 	   post = Posts.find({postedBy: urlId}, {sort:{postedAt: -1}});
-	   //model = ModelFiles.find({owner: urlId}, {sort:{timeUploaded:-1}});
 	} else {
 	   if(isFollower >= 0){
 		audience = ['public', 'followers'];
 		post = Posts.find({audience: {$in: audience}, postedBy: urlId }, {sort: {postedAt: -1}});
-		//model = ModelFiles.find( {audience: {$in: audience}, owner:urlId }, {sort: {timeUploaded: -1}});
 	   } else{
 		post = Posts.find({postedBy: urlId, audience: "public"}, {sort: {postedAd: -1}});
-		//model = ModelFiles.find({owner: urlId, audience: "public"}, {sort:{timeUploaded:-1}});
 	   }
 	}
 	if (post.count()) {
