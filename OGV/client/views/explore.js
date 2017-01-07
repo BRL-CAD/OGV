@@ -87,23 +87,6 @@ Template.searchUserResult.rendered = function() {
   UserSearch.search('');
 };
 
-/*
-Template.exploreResult.helpers ({
-    models: function() {
-        var filters = document.getElementById('selected-filters').innerHTML;
-        var filter_array = filters.split(" + ");
-        var currentUser = Meteor.user();
-
-        model = ModelFiles.find( {owner: {$not: currentUser._id}}, {categories: {$elemMatch: {$in: filter_array}}});
-        if (model.count()) {
-            return model;
-        } else {
-            return false;
-        }
-    }
-})
-*/
-
 Template.exploreResult.helpers({
     /**
      * models helper finds all the models from the database and then sorts
