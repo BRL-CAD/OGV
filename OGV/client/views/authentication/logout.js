@@ -31,8 +31,6 @@ Template.logOut.events({
 	Meteor.logout(function() {
 	     throwError('Bye!, See you back soon');
 	     Router.go('/');
-	    /*sAlert.info('Bye!, See you back soon', {effect: 'flip', onRouteClose: false, stack: false, timeout: 4000, position: 'top'});
-	    Router.go("/"); */
 	});
 	
 	return false;
