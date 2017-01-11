@@ -1310,12 +1310,6 @@ svg {
     z-index: 1000;
 }
 
-svg {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
 .plane{
     position: absolute;
     width: 400px;
