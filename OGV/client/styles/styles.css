@@ -1435,14 +1435,14 @@ svg {
 
 @-o-keyframes planeFirst {
     from {
-        -ms-transform: rotateZ(60deg) rotateX(60deg) rotateY(90deg) translateY(200%);
+        -o-transform: rotateZ(60deg) rotateX(60deg) rotateY(90deg) translateY(200%);
         opacity: 1;
     }
     90%{
         opacity: 1;
     }
     to {
-        -ms-transform: rotateZ(60deg) rotateX(60deg) rotateY(360deg) translateY(-500%);
+        -o-transform: rotateZ(60deg) rotateX(60deg) rotateY(360deg) translateY(-500%);
         opacity: 0;
     }
 }
