@@ -32,5 +32,8 @@
   "bugs": {
     "url": "https://github.com/BRL-CAD/OGV-meteor/issues"
   },
-  "homepage": "https://github.com/BRL-CAD/OGV-meteor#readme"
+  "homepage": "https://github.com/BRL-CAD/OGV-meteor#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.3"
+  }
 }

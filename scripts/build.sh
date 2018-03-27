@@ -12,17 +12,17 @@ echo "# Created folder $OUT"
 # Build 
 echo "# Building... "
 meteor build $OUT  --architecture=os.linux.x86_64
-echo "# Finished building to $OUT/OGV-meteor.tar.gz"
+echo "# Finished building to $OUT/OGV.tar.gz"
 
 # Unpack tar
 echo "# Unpacking app..."
-(cd $OUT; tar -xzf OGV-meteor.tar.gz)
+(cd $OUT; tar -xzf OGV.tar.gz)
 echo "# Unpacked app to $OUT/bundle"
 
 # Clean up
 echo "# Cleaning up"
-rm -rf $OUT/OGV-meteor.tar.gz
-echo "# Removed OGV-meteor.tar.gz"
+rm -rf $OUT/OGV.tar.gz
+echo "# Removed OGV.tar.gz"
 
 # Install deps
 echo "# Installing dependencies..."
