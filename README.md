@@ -72,8 +72,8 @@ App will be running at http://localhost:3000
 ## BRL-CAD
 * Downloading
 	* Go to https://brlcad.org/d/download
-	* Download file for your preffered system
-Installing
+	* Download file for your preferred system
+* Installing
 ```
 sudo dpkg -i brl*.deb
 ```
