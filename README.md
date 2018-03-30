@@ -40,7 +40,7 @@ You will be asked for sudo access twice (for node and mongo)
 
 
 ## BRL-CAD
-### You need to install BRL-CAD before running the project.
+#### You need to install BRL-CAD before running the project.
 * Downloading
 	* Go to https://brlcad.org/d/download
 	* Download file for your preferred system
@@ -79,5 +79,4 @@ To start OGV run
 ```
 App will be running at http://localhost:3000
 
-##Note
-If you are facing any permission issues then do not use sudo while installing the packages.
+Note: If you are facing any permission issues then do not use sudo while installing the packages.
