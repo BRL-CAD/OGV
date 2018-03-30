@@ -1,0 +1,2 @@
+username: admin@example.com
+password: <password stored in config.json>
