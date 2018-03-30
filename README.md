@@ -60,6 +60,7 @@ Then open Browser and type in URL
 ```
 http://localhost:3000
 ```
+login details
 ```
 username: admin@example.com
 password: <password stored in config.json>
