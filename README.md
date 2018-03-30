@@ -60,9 +60,10 @@ Then open Browser and type in URL
 ```
 http://localhost:3000
 ```
+```
 username: admin@example.com
 password: <password stored in config.json>
-
+```
 ## Lint
 To run ESlint check run 
 ```
