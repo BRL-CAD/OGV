@@ -48,6 +48,7 @@ You will be asked for sudo access twice (for node and mongo)
 ```
 sudo dpkg -i brl*.deb
 ```
+For Example: filename - `brlcad_7.26.4-0_amd64.deb` then `sudo dpkg -i brlcad_7.26.4-0_amd64.deb`
 
 ## Run
 Rename config.example.json to config.json and write admin password there.
