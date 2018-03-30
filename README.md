@@ -38,6 +38,17 @@ You will be asked for sudo access twice (for node and mongo)
   * sudo apt-get install git
   * git clone https://github.com/BRL-CAD/OGV-meteor
 
+
+## BRL-CAD
+### You need to install BRL-CAD before running the project.
+* Downloading
+	* Go to https://brlcad.org/d/download
+	* Download file for your preferred system
+* Installing
+```
+sudo dpkg -i brl*.deb
+```
+
 ## Run
 Rename config.example.json to config.json and write admin password there.
 
@@ -68,13 +79,5 @@ To start OGV run
 ```
 App will be running at http://localhost:3000
 
-
-## BRL-CAD
-* Downloading
-	* Go to https://brlcad.org/d/download
-	* Download file for your preferred system
-* Installing
-```
-sudo dpkg -i brl*.deb
-```
-Note: Install all the packages in user permission.
+##Note
+If you are facing any permission issues then do not use sudo while installing the packages.
