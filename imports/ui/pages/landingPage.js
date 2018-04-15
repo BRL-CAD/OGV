@@ -38,6 +38,7 @@ Template.landingPage.helpers({
     if (settings) {
       return settings.landingPageModel;
     }
+    sAlert.error("Check BRL-CAD installation on server.");
     return false;
   }
 });
