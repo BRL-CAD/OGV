@@ -1,3 +1,91 @@
 <template name="error">
-    <img src="/icons/Error_graphic.png" >
-</template> 
+    <!-- Slide 1 Start-->
+    <section class="landing1">
+        <div class="landing1-box">
+            <div class="row landing1-top">
+                <div class="col-6">
+                    <div class="landing1-title">
+                        Online<br/> Geometry
+                        <br/> Viewer
+                    </div>
+                    <a href="/sign-up" class="button button-large button-red">Join</a>
+                    <a href="/log-in" class="button button-large button-blue">Login</a>
+                </div>
+                {{#if landingPageModel}}
+                <div class="col-6">
+                    <iframe width="350" height="250" src="/models/{{landingPageModel}}/shared=true" frameborder="0"></iframe>
+                </div>
+                {{/if}}
+            </div>
+            <div class="row landing1-points">
+                <div class="col-4 landing1-point">
+                    <div class="landing1-point-title">
+                        Simple
+                    </div>
+                    <div class="landing1-point-text">
+                        Just drag and drop your models and enjoy.
+                    </div>
+                </div>
+                <div class="col-4 landing1-point">
+                    <div class="landing1-point-title">
+                        Open
+                    </div>
+                    <div class="landing1-point-text">
+                        Built by volunteers around the world. Join us at <a href="https://github.com/BRLCAD/OGV-meteor">github</a>.
+                    </div>
+                </div>
+                <div class="col-4 landing1-point">
+                    <div class="landing1-point-title">
+                        Social
+                    </div>
+                    <div class="landing1-point-text">
+                        Embed and share your models anywhere on social sites, blogs or others.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div style="clear:both;"></div>
+    <!-- Slide 1 Over -->
+
+    <!-- Slide 2 Start-->
+    <section class="slide story" id="landing2" data-slide="2">
+        <div class="container">
+            <div class="row title-row">
+                <div class="col-12 landing2-title">This is what OGV does best</div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-3 col-sm-6">
+                    <p><img class="mobile-view-fileUpload" src="/icons/fileUpload.png" width="200px" height="200px" /></p>
+                    <h3 class="landing2-titles">Upload Model</h3>
+                    <p class="landing2-text">Countless number of .g files can be uploaded from your browsers.</p>
+                </div>
+                <div class="col-12 col-lg-3 col-sm-6">
+                    <p><img class="mobile-view-computer" src="/icons/computer.png" width="200px" height="200px" /></p>
+                    <h3 class="landing2-titles">Visualize</h3>
+                    <p class="landing2-text">Visualize your models in three dimensions and communicate more effectively.</p>
+                </div>
+                <div class="col-12 col-lg-3 col-sm-6">
+                    <p><img class="mobile-view-share" src="/icons/share.png" width="200px" height="200px" /></p>
+                    <h3 class="landing2-titles">Embed and Share</h3>
+                    <p class="landing2-text">Embed and share your models anywhere on social sites, blogs or others.</p>
+                </div>
+                <div class="col-12 col-lg-3 col-sm-6">
+                    <p><img class="mobile-view-download" src="/icons/download-black.png" width="200px" height="200px" /></p>
+                    <h3 class="landing2-titles">Download</h3>
+                    <p class="landing2-text">Fetch, download and use the 3D models for printing and more.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Slide 2 over-->
+
+    <!-- Footer Start -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <p class="text-center">All trademarks referenced herein are the properties of their respective owners. This site is not sponsored, endorsed,
+                or run by the U.S. Government.</p>
+        </div>
+    </footer>
+    <!-- Footer End -->
+</template>
