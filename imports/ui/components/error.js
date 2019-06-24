@@ -26,6 +26,3 @@ import "./error.css";
  *
  * authenticate user credentials, shows the errors if any
  */
-
-import "/imports/ui/pages/landingPage.html";
-import "/imports/ui/pages/landingPage.css";
