@@ -1,91 +1,53 @@
 <template name="error">
-    <!-- Slide 1 Start-->
-    <section class="landing1">
-        <div class="landing1-box">
-            <div class="row landing1-top">
-                <div class="col-6">
-                    <div class="landing1-title">
-                        Online<br/> Geometry
-                        <br/> Viewer
-                    </div>
-                    <a href="/sign-up" class="button button-large button-red">Join</a>
-                    <a href="/log-in" class="button button-large button-blue">Login</a>
-                </div>
-                {{#if landingPageModel}}
-                <div class="col-6">
-                    <iframe width="350" height="250" src="/models/{{landingPageModel}}/shared=true" frameborder="0"></iframe>
-                </div>
-                {{/if}}
-            </div>
-            <div class="row landing1-points">
-                <div class="col-4 landing1-point">
-                    <div class="landing1-point-title">
-                        Simple
-                    </div>
-                    <div class="landing1-point-text">
-                        Just drag and drop your models and enjoy.
-                    </div>
-                </div>
-                <div class="col-4 landing1-point">
-                    <div class="landing1-point-title">
-                        Open
-                    </div>
-                    <div class="landing1-point-text">
-                        Built by volunteers around the world. Join us at <a href="https://github.com/BRLCAD/OGV-meteor">github</a>.
-                    </div>
-                </div>
-                <div class="col-4 landing1-point">
-                    <div class="landing1-point-title">
-                        Social
-                    </div>
-                    <div class="landing1-point-text">
-                        Embed and share your models anywhere on social sites, blogs or others.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <div style="clear:both;"></div>
-    <!-- Slide 1 Over -->
+	<section class="error-page container">
+		<div class="clouds">
+			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="762px"
+			 height="331px" viewBox="0 0 762 331" enable-background="new 0 0 762 331" xml:space="preserve" class="cloud big front slowest">
+				<path fill="#333" d="m 335.61722,233.49985 c -34.28963,0.10255 -67.81382,23.00758 -78.46875,55.71875 -15.50903,-7.86479 -36.34131,1.23339 -41.375,17.78125 -0.82464,2.50931 -1.366,5.14005 -1.5,7.78125 -24.33266,-4.28523 -53.11027,3.67782 -66.15625,25.875 -8.72578,14.48206 -4.48487,34.12604 7.9375,45.0625 20.14505,19.15881 53.12888,21.18262 77.28125,9.8125 6.40932,17.1169 24.58515,28.15385 42.56308,27.38974 4.0015,-0.17008 7.9932,-0.9248 11.84317,-2.32724 6.73489,-2.17895 12.87104,-6.49603 17.75,-11.3125 18.13718,8.74906 41.09843,7.19447 57.46875,-4.65625 26.25829,26.37123 74.15346,25.29791 98.84375,-2.65625 2.94877,-2.01374 3.79092,-7.90378 8.09375,-6.5625 19.94467,1.38398 38.72503,-16.46878 37.125,-36.625 -0.65236,-20.76021 -22.11224,-36.666 -42.25,-32.40625 -4.15336,1.72099 -5.74437,-4.41954 -9.15625,-5.96875 -9.65674,-8.48386 -22.47492,-13.10657 -34.5,-15.4375 -3.66492,-36.20074 -34.97739,-65.81697 -70.58338,-70.51866 -4.92069,-0.74522 -9.92715,-1.06536 -14.91662,-0.95009 z"
+				/>
+			</svg>
+			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="762px"
+			 height="331px" viewBox="0 0 762 331" enable-background="new 0 0 762 331" xml:space="preserve" class="cloud small slow">
+				<path fill="#333" d="m 335.61722,233.49985 c -34.28963,0.10255 -67.81382,23.00758 -78.46875,55.71875 -15.50903,-7.86479 -36.34131,1.23339 -41.375,17.78125 -0.82464,2.50931 -1.366,5.14005 -1.5,7.78125 -24.33266,-4.28523 -53.11027,3.67782 -66.15625,25.875 -8.72578,14.48206 -4.48487,34.12604 7.9375,45.0625 20.14505,19.15881 53.12888,21.18262 77.28125,9.8125 6.40932,17.1169 24.58515,28.15385 42.56308,27.38974 4.0015,-0.17008 7.9932,-0.9248 11.84317,-2.32724 6.73489,-2.17895 12.87104,-6.49603 17.75,-11.3125 18.13718,8.74906 41.09843,7.19447 57.46875,-4.65625 26.25829,26.37123 74.15346,25.29791 98.84375,-2.65625 2.94877,-2.01374 3.79092,-7.90378 8.09375,-6.5625 19.94467,1.38398 38.72503,-16.46878 37.125,-36.625 -0.65236,-20.76021 -22.11224,-36.666 -42.25,-32.40625 -4.15336,1.72099 -5.74437,-4.41954 -9.15625,-5.96875 -9.65674,-8.48386 -22.47492,-13.10657 -34.5,-15.4375 -3.66492,-36.20074 -34.97739,-65.81697 -70.58338,-70.51866 -4.92069,-0.74522 -9.92715,-1.06536 -14.91662,-0.95009 z"
+				/>
+			</svg>
+			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="762px"
+			 height="331px" viewBox="0 0 762 331" enable-background="new 0 0 762 331" xml:space="preserve" class="cloud distant super-slow massive">
+				<path fill="#333" d="m 335.61722,233.49985 c -34.28963,0.10255 -67.81382,23.00758 -78.46875,55.71875 -15.50903,-7.86479 -36.34131,1.23339 -41.375,17.78125 -0.82464,2.50931 -1.366,5.14005 -1.5,7.78125 -24.33266,-4.28523 -53.11027,3.67782 -66.15625,25.875 -8.72578,14.48206 -4.48487,34.12604 7.9375,45.0625 20.14505,19.15881 53.12888,21.18262 77.28125,9.8125 6.40932,17.1169 24.58515,28.15385 42.56308,27.38974 4.0015,-0.17008 7.9932,-0.9248 11.84317,-2.32724 6.73489,-2.17895 12.87104,-6.49603 17.75,-11.3125 18.13718,8.74906 41.09843,7.19447 57.46875,-4.65625 26.25829,26.37123 74.15346,25.29791 98.84375,-2.65625 2.94877,-2.01374 3.79092,-7.90378 8.09375,-6.5625 19.94467,1.38398 38.72503,-16.46878 37.125,-36.625 -0.65236,-20.76021 -22.11224,-36.666 -42.25,-32.40625 -4.15336,1.72099 -5.74437,-4.41954 -9.15625,-5.96875 -9.65674,-8.48386 -22.47492,-13.10657 -34.5,-15.4375 -3.66492,-36.20074 -34.97739,-65.81697 -70.58338,-70.51866 -4.92069,-0.74522 -9.92715,-1.06536 -14.91662,-0.95009 z"
+				/>
+			</svg>
 
-    <!-- Slide 2 Start-->
-    <section class="slide story" id="landing2" data-slide="2">
-        <div class="container">
-            <div class="row title-row">
-                <div class="col-12 landing2-title">This is what OGV does best</div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-lg-3 col-sm-6">
-                    <p><img class="mobile-view-fileUpload" src="/icons/fileUpload.png" width="200px" height="200px" /></p>
-                    <h3 class="landing2-titles">Upload Model</h3>
-                    <p class="landing2-text">Countless number of .g files can be uploaded from your browsers.</p>
-                </div>
-                <div class="col-12 col-lg-3 col-sm-6">
-                    <p><img class="mobile-view-computer" src="/icons/computer.png" width="200px" height="200px" /></p>
-                    <h3 class="landing2-titles">Visualize</h3>
-                    <p class="landing2-text">Visualize your models in three dimensions and communicate more effectively.</p>
-                </div>
-                <div class="col-12 col-lg-3 col-sm-6">
-                    <p><img class="mobile-view-share" src="/icons/share.png" width="200px" height="200px" /></p>
-                    <h3 class="landing2-titles">Embed and Share</h3>
-                    <p class="landing2-text">Embed and share your models anywhere on social sites, blogs or others.</p>
-                </div>
-                <div class="col-12 col-lg-3 col-sm-6">
-                    <p><img class="mobile-view-download" src="/icons/download-black.png" width="200px" height="200px" /></p>
-                    <h3 class="landing2-titles">Download</h3>
-                    <p class="landing2-text">Fetch, download and use the 3D models for printing and more.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Slide 2 over-->
+			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="762px"
+			 height="331px" viewBox="0 0 762 331" enable-background="new 0 0 762 331" xml:space="preserve" class="cloud slower">
+				<path fill="#333" d="M715.394,228h-16.595c0.79-5.219,1.201-10.562,1.201-16c0-58.542-47.458-106-106-106
+        c-8.198,0-16.178,0.932-23.841,2.693C548.279,45.434,488.199,0,417.5,0c-84.827,0-154.374,65.401-160.98,148.529 C245.15,143.684,232.639,141,219.5,141c-49.667,0-90.381,38.315-94.204,87H46.607C20.866,228,0,251.058,0,279.5
+        S20.866,331,46.607,331h668.787C741.133,331,762,307.942,762,279.5S741.133,228,715.394,228z" />
+			</svg>
 
-    <!-- Footer Start -->
-    <footer class="footer" id="footer">
-        <div class="container">
-            <p class="text-center">All trademarks referenced herein are the properties of their respective owners. This site is not sponsored, endorsed,
-                or run by the U.S. Government.</p>
-        </div>
-    </footer>
-    <!-- Footer End -->
+			<div class="container mainContent" id="mainContent">
+				<div class="col-lg-3 col-md-3 col-sm-3 ">
+					<div class="frame">
+						<div class="plane">
+							<div class="left-side"></div>
+							<div class="right-side"></div>
+							<div class="right-wing"></div>
+							<div class="left-wing"></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- For Space -->
+				<div class="col-lg-3 col-md-3 col-sm-3 space">
+				</div>
+
+				<div class="col-lg-16 col-md-16 col-sm-16">
+					<div class="row row-text">
+						<h1 class="four-oh-four">404</h1>
+						<h3 class="error-text">Page your are looking can't be found. Go back to <a onclick="window.location.href='/'">home page.</a> </h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
 </template>
