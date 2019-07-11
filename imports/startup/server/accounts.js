@@ -32,6 +32,23 @@
  * admin roles on a fresh install (when number of users is zero)
  */
 
+//Generating 8 Length Alphanumeric Password.
+function passwordGen(len){
+    var text = " ";
+    var charset = "abcdefghijklmnopqrstuvwxyz0123456789";
+    for( var i=0; i < len; i++ )
+  text += charset.charAt(Math.floor(Math.random() * charset.length));
+    return text;
+}
+
+//Applying Password to Meteor Admin User Settings and Logging to Server.
+var randomPassword = passwordGen(8)
+
+//User ID for Admin is currently bMfEoAFqu4EibGwtH
+console.log("Admin Password:" + Meteor.settings.adminPassword);
+Accounts.setPassword("bMfEoAFqu4EibGwtH",randomPassword)
+
+
 Accounts.config({
   sendVerificationEmail: true
   //forbidClientAccountCreation: false
@@ -51,9 +68,11 @@ if (Meteor.users.find().fetch().length === 0) {
     }
   ];
 
+  
+
   const Bio = "greatest 3d modeller on the planet";
   _.each(users, userData => {
-    const password = Meteor.settings.adminPassword;
+    const password = randomPassword;
     const id = Accounts.createUser({
       email: userData.email,
       password: password,
