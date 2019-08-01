@@ -42,8 +42,9 @@ Template.logIn.events({
 
     if (
       isNotEmpty(email) &&
-      isEmail(email) &&
       isNotEmpty(password) &&
+      isEmail(email) &&
+      isAdminEmailServerOn(email) &&
       isValidPassword(password)
     ) {
       Meteor.loginWithPassword(email, password, err => {
