@@ -45,6 +45,7 @@ Template.signUp.events({
       isNotEmpty(password) &&
       isNotEmpty(username) &&
       isEmail(email) &&
+      isAdminEmailServerOn(email) &&
       areValidPasswords(password, passwordConfirm)
     ) {
       Accounts.createUser(
