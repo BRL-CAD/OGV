@@ -56,18 +56,18 @@ isEmail = function(value) {
 };
 
 /**
- * Validates that the admin has set email server, it should be a proper email address
+ * Validates that the smtp mailgun email server has been set by admin
  */
 
 isAdminEmailServerOn = function(value) {
   const requiredUsername = Meteor.settings.public.smtp.username;
   const requiredServer = Meteor.settings.public.smtp.server;
   const requiredPassword = Meteor.settings.public.smtp.password;
-  if (requiredUsername.includes(mailgun.org)&&requiredServer.includes(mailgun.org)&&requiredPassword.length>0) {
+  if (requiredUsername.includes("mailgun.org")&&requiredServer.includes("mailgun.org")&&requiredPassword.length>0) {
     return true;
   }
   sAlert.error("Connecting to Email Server.");
-  //Reconnect to Mailgun email server if needed
+  //Reconnect to Mailgun email server
   return false;
 };
 
