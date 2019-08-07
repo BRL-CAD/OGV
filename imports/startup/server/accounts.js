@@ -53,20 +53,6 @@ if (Meteor.users.find().fetch().length !== 0) {
 
   console.log("Initial Users Have Already Been Created.");
 
-  //Find Admin User ID
-  var adminUser = Accounts.findUserByEmail("admin@example.com");
-
-  //Creating New 8 Digit Alphanumeric Password
-  var randomPassword = passwordGen(8);
-  var newPassword = randomPassword.substring(1);
-  
-  if(Meteor.settings.adminPassword==="password"){
-    //ONLY IF PASSWORD HAS NOT BEEN SET ON ADMIN,
-    //Apply Password to Meteor Admin User and Logging to Server 
-    Accounts.setPassword(adminUser,newPassword);
-    console.log("Admin Email: " + "admin@example.com");
-    console.log("Admin Password: " + newPassword);
-  }
 
 }
 else if(Meteor.users.find().fetch().length === 0) {
@@ -126,9 +112,13 @@ else if(Meteor.users.find().fetch().length === 0) {
   var newPassword = randomPassword.substring(1);
 
   //Applying Password to Meteor Admin User and Logging to Server.
-  Accounts.setPassword(adminUser,newPassword);
-  console.log("Admin Email: " + "admin@example.com");
-  console.log("Admin Password: " + newPassword);
+  if(Meteor.settings.adminPassword==="password"){
+    //ONLY IF PASSWORD HAS NOT BEEN SET ON ADMIN,
+    //Apply Password to Meteor Admin User and Logging to Server 
+    Accounts.setPassword(adminUser,newPassword);
+    console.log("Admin Email: " + "admin@example.com");
+    console.log("Admin Password: " + newPassword);
+  }
 }
 
 
