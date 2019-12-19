@@ -5,12 +5,12 @@
 
 Online Geometry Viewer is an online web application, where users can upload, view
 and share 3D CAD models. They can also host these models online, can like (love)
-or comment on them. In a nutshell it can be looked at as a social blogging 
-platform for 3D models. 
+or comment on them. In a nutshell it can be looked at as a social blogging
+platform for 3D models.
 
 ## Contribution Guidelines
 TL;DR
-We love contributions, if you want to contribute make sure you are on development branch to see the latest code. To prevent any duplicate work, please communicate if you are working on something. 
+We love contributions, if you want to contribute make sure you are on development branch to see the latest code. To prevent any duplicate work, please communicate if you are working on something.
 
 The best (but not the only) way to contribute is
 * Check if the issue you are trying to solve is already reported. (search the issue tracker)
@@ -20,7 +20,7 @@ The best (but not the only) way to contribute is
 * Make sure when you make a Pull request, it is to the development branch.
 * [optional] Assign a reviewer from one of the contributors, specially if you are new and have been talking to existing contributors.
 * Never merge your own pull requests.
-* Always check the "files changed" tab for any surprises. 
+* Always check the "files changed" tab for any surprises.
 * Be polite and nice.
 
 
@@ -61,10 +61,33 @@ You will be asked for sudo access twice (for node and mongo)
   * sudo apt-get install git
   * git clone https://github.com/BRL-CAD/OGV-meteor
 
+### Mac based distributions
+
+* Install brew by following the instructions [here](https://docs.brew.sh/Installation)
+
+* Install Nodejs
+
+  * brew install node
+
+* Install mongoDB
+
+    * brew tap mongodb/brew
+    * brew install mongodb-community
+
+* Install Meteor
+
+  * brew install curl
+  * curl https://install.meteor.com/ | sh
+
+* Clone the OGV Repository
+
+  * brew install git
+  * git clone https://github.com/BRL-CAD/OGV-meteor
+
 ## Run
 Move config.example.json to config.json and write admin password there.
 
-To run app while developing use: 
+To run app while developing use:
 ```
 npm run start
 ```
@@ -74,20 +97,19 @@ http://localhost:3000
 ```
 
 ## Lint
-To run ESlint check run 
+To run ESlint check run
 ```
-meteor npm run lint 
+meteor npm run lint
 ```
 
 ## Build and deploy
 ### Ubuntu and macOS
-To build OGV run build script 
+To build OGV run build script
 ```
 ./scripts/build.sh
 ```
-To start OGV run 
+To start OGV run
 ```
 ../OGV-build/bundle/start.sh
 ```
 App will be running at http://localhost:3000
-
