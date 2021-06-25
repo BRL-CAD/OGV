@@ -127,6 +127,8 @@ oauth@1.3.2
 oauth2@1.3.0
 observe-sequence@1.0.16
 ordered-dict@1.1.0
+ostrio:cookies@2.7.0
+ostrio:files@2.0.1
 polguixe:meteor-datgui@0.5.1_4
 practicalmeteor:mocha-core@1.0.1
 promise@0.11.2
