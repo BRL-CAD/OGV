@@ -44,82 +44,81 @@ function convertFile(fileId) {
 
   const convertPercentage = 0,
     modelObj = ModelFiles.findOne(fileId),
-    filePath = modelObj.createReadStream("modelFiles").path;
+    filePath = "/home/amanjs/gsoc/final-OGV/.meteor/local/build/programs/server/" + modelObj.path;
+  // filePath = modelObj.createReadStream("modelFiles").path;
+  console.log(filePath);
+  // modelObj.update({
+  //   $set: {
+  //     conversion: convertPercentage
+  //   }
+  // });
+  const fs = Npm.require("fs");
 
-  modelObj.update({
-    $set: {
-      conversion: convertPercentage
-    }
+  if (filePath.indexOf(".obj") === filePath.length - 4) {
+    console.log("[cfs_uploader] Got .obj file, saving without converting.");
+    // objFile = new FS.File(filePath);
+    let objFile = fs.readFileSync(filePath);
+    objFile.gFile = fileId;
+    // OBJFiles.insert(objFile, err => {
+    //   if (err) {
+    //     throw new Meteor.Error(
+    //       `Error while saving file ID - ${fileId} : ${error}`
+    //     );
+    //   }
+    //   // modelObj.update({
+    //   //   $set: {
+    //   //     conversion: 100,
+    //   //     converted: true
+    //   //   }
+    //   // });
+    // });
+    return;
+  }
+
+  const { objParts, mtlPath, objects } = convertG(filePath, fileId);
+
+  // Save mtl
+  if (mtlPath) {
+    console.log("TRYING TO SAVE");
+    mtlFile = fs.readFileSync(mtlPath);
+    // mtlFile = new FS.File(mtlPath);
+    mtlFile.gFile = fileId;
+    // MTLFiles.insert(mtlFile, err => {
+    //   if (err) {
+    //     throw new Meteor.Error(err);
+    //   }
+    // });
+  }
+
+  objParts.forEach((part, i) => {
+    let objFile = fs.readFileSync(part);
+    objFile.gFile = fileId;
+    // OBJFiles.insert(objFile, err => {
+    //   if (err) {
+    //     throw new Meteor.Error(
+    //       `Error while saving file ID - ${fileId} : ${error}`
+    //     );
+    //   }
+    //   console.log(objParts.length, i, i * 100 / objParts.length);
+    //   modelObj.update({
+    //     $set: {
+    //       conversion: Math.ceil(i * 100 / (objParts.length - 1)),
+    //       converted: true
+    //     }
+    //   });
+    //   console.log(`[cfs_uploader] File #${fileId} part ${part} saved`);
+    //   // Generate model tree
+    //   // const tree = getModelTree(objects.split(" ").slice(-1, 1), filePath);
+    //   // modelObj.update({
+    //   //   $set: {
+    //   //     converted: true,
+    //   //     tree: JSON.stringify(tree)
+    //   //   }
+    //   // });
+    // });
   });
 
-  modelObj.once(
-    "stored",
-    Meteor.bindEnvironment(() => {
-      if (filePath.indexOf(".obj") === filePath.length - 4) {
-        console.log("[cfs_uploader] Got .obj file, saving without converting.");
-        objFile = new FS.File(filePath);
-        objFile.gFile = fileId;
-        OBJFiles.insert(objFile, err => {
-          if (err) {
-            throw new Meteor.Error(
-              `Error while saving file ID - ${fileId} : ${error}`
-            );
-          }
-          modelObj.update({
-            $set: {
-              conversion: 100,
-              converted: true
-            }
-          });
-        });
-        return;
-      }
-
-      const { objParts, mtlPath, objects } = convertG(filePath, fileId);
-
-      // Save mtl
-      if (mtlPath) {
-        console.log("TRYING TO SAVE");
-        mtlFile = new FS.File(mtlPath);
-        mtlFile.gFile = fileId;
-        MTLFiles.insert(mtlFile, err => {
-          if (err) {
-            throw new Meteor.Error(err);
-          }
-        });
-      }
-
-      objParts.forEach((part, i) => {
-        objFile = new FS.File(part);
-        objFile.gFile = fileId;
-        OBJFiles.insert(objFile, err => {
-          if (err) {
-            throw new Meteor.Error(
-              `Error while saving file ID - ${fileId} : ${error}`
-            );
-          }
-          console.log(objParts.length, i, i * 100 / objParts.length);
-          modelObj.update({
-            $set: {
-              conversion: Math.ceil(i * 100 / (objParts.length - 1)),
-              converted: true
-            }
-          });
-          console.log(`[cfs_uploader] File #${fileId} part ${part} saved`);
-          // Generate model tree
-          // const tree = getModelTree(objects.split(" ").slice(-1, 1), filePath);
-          // modelObj.update({
-          //   $set: {
-          //     converted: true,
-          //     tree: JSON.stringify(tree)
-          //   }
-          // });
-        });
-      });
-
-      // Save obj
-    })
-  );
+  // Save obj
 }
 
 /**

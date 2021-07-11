@@ -128,6 +128,7 @@ Router.map(function() {
     },
     data() {
       const model = ModelFiles.findOne({ owner: Meteor.user()._id });
+      console.log(model, 'model on client')
       if (model == null) {
         Router.go("/upload");
         return false;

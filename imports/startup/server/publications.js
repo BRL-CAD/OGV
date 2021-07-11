@@ -22,7 +22,9 @@
  *  @brief publishes data from server to client
  */
 
-Meteor.publish("modelFiles", () => ModelFiles.find());
+Meteor.publish("modelFiles", () => {
+  return ModelFiles.find().cursor;
+});
 
 Meteor.publish("objFiles", () => OBJFiles.find());
 

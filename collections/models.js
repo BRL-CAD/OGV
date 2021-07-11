@@ -28,7 +28,7 @@
  * function called transformWrite that calls a function which
  * converts g files into obj files.
  */
-gStore = new FS.Store.FileSystem("modelFiles", {
+gStore = new FS.Store.FileSystem("modelFiles2", {
   transformWrite(fileObj, readStream, writeStream) {
     const fileId = fileObj._id;
 
@@ -47,34 +47,55 @@ gStore = new FS.Store.FileSystem("modelFiles", {
   }
 });
 
+const gStoreConfig = {
+  collectionName: "modelFiles",
+  onBeforeUpload(fileObj) {
+    console.log(fileObj);
+    return fileObj;
+  },
+  onAfterUpload(fileObj) {
+    const fileId = fileObj._id;
+
+    Meteor.call("convertFile", fileId, err => {
+      if (err) {
+        console.log(err);
+        // Meteor.Error("590", err.reason);
+      }
+    });
+    return fileObj;
+  }
+};
+
+ModelFiles = new FilesCollection(gStoreConfig);
+
 /**
  * Model files is a collection that stores FS.FILE object of .g
  * file uploaded by user
  */
 
-ModelFiles = new FS.Collection("modelFiles", {
+ModelFiles2 = new FS.Collection("modelFiles", {
   stores: [gStore]
 });
 
-ModelFiles.allow({
-  insert(userId, file) {
-    if (file.extension() === "g" || file.extension() === "obj") {
-      return true;
-    }
-    return false;
-  },
-  update(userId, file, fieldNames, modifier) {
-    return (
-      (userId && file.owner === userId) || modifier.$inc.viewsCount !== userId
-    );
-  },
-  download() {
-    return true;
-  },
-  remove(userId, file) {
-    return userId && file.owner === userId;
-  }
-});
+// ModelFiles.allow({
+//   insert(userId, file) {
+//     if (file.extension() === "g" || file.extension() === "obj") {
+//       return true;
+//     }
+//     return false;
+//   },
+//   update(userId, file, fieldNames, modifier) {
+//     return (
+//       (userId && file.owner === userId) || modifier.$inc.viewsCount !== userId
+//     );
+//   },
+//   download() {
+//     return true;
+//   },
+//   remove(userId, file) {
+//     return userId && file.owner === userId;
+//   }
+// });
 
 /**
  * OBJFiles is a collection for all the obj files that get generated
