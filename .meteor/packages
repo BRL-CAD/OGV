@@ -62,3 +62,4 @@ dynamic-import@0.6.0
 underscore@1.0.10
 fourseven:scss
 mrt:nprogress
+rocketchat:oauth2-server
