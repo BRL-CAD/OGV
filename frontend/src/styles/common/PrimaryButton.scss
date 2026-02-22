@@ -1,0 +1,17 @@
+.primary-button {
+  & {
+    @include flex($justifyContent: center, $alignItems: center, $gap: 10px);
+    background-color: $primary-color;
+    color: $surface-color;
+    border: none;
+    border-radius: $border-radius;
+    padding: 2px 16px;
+    cursor: pointer;
+  }
+  &-label {
+    @include font($fontSize: 14px, $fontWeight: 500);
+    color: $text-accent-color;
+    margin: 0;
+    text-align: center;
+  }
+}

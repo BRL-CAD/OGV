@@ -1,0 +1,105 @@
+#particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(135deg, #0a192ff8 0%, #2d0a16 100%);
+  > canvas {
+    height: 100% !important;
+    max-height: 100% !important;
+    position: absolute !important;
+  }
+}
+.home-page {
+
+.hero {
+  &-container {
+    @include flex($direction: column, $justifyContent: center, $alignItems: center, $wrap: nowrap);
+    height: 82vh;
+    position: relative;
+    overflow: hidden;
+  }
+  &-content {
+    @include flex($direction: column, $justifyContent: center, $alignItems: center, $wrap: nowrap);
+  }
+  &-title {
+    color: $primary-color;
+    @include font($fontSize: clamp(2.9rem, 5vw, 4rem), $fontWeight: 700);
+    text-align: center;
+  }
+  &-paragraph {
+    color: $text-accent-color;
+    text-align: center;
+    @include font($fontSize: clamp(1.3rem, 2vw, 1.5rem), $fontWeight: 400);
+  }
+  &-button {
+    margin-top: 16px;
+    padding: 12px;
+  }
+}
+.home-container {
+  @include flex($direction: column, $justifyContent: center, $alignItems: center, $wrap: nowrap, $gap: 30px);
+  margin-top: 50px;
+}
+.features {
+  &-title {
+    color: $text-color;
+    @include font($fontSize: clamp(2.2rem, 5vw, 2.8em), $fontWeight: 500);
+    text-align: center;
+    max-width: 1000px;
+  }
+  &-cards {
+    @include flex($direction: row, $justifyContent: center, $alignItems: stretch, $wrap: wrap, $gap: 16px);
+    width: 100%;
+    padding: 10px;
+  }
+}
+.how-to-use {
+  &-container {
+    @include flex($direction: column, $justifyContent: center, $alignItems: center, $wrap: nowrap, $gap: 20px);
+    transform-origin: center;
+    will-change: transform;
+    overflow: hidden;
+  }
+  &-title {
+    color: $text-color;
+    @include font($fontSize: clamp(2.2rem, 5vw, 2.8rem), $fontWeight: 500);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  &-video-container {
+    @include flex($direction: column, $justifyContent: center, $alignItems: center, $wrap: nowrap, $gap: 0);
+    transform-origin: center;
+    will-change: transform;
+  }
+  &-video {
+    width: 80%;
+    max-width: 1200px;
+    height: auto;
+    border-radius: $border-radius;
+  }
+}
+
+.faq {
+  &-container {
+    @include flex($direction: column, $justifyContent: center, $alignItems: stretch, $wrap: nowrap, $gap: 20px);
+    max-width: 1000px;
+    padding: 10px;
+  }
+  &-title {
+    color: $text-color;
+    @include font($fontSize: clamp(2rem, 5vw, 2.5rem), $fontWeight: 500);
+    text-align: center;
+  }
+}
+@media (min-width: $breakpoint-small) {
+    .features {
+      &-cards {
+        @include flex($direction: row, $justifyContent: center, $alignItems: stretch, $wrap: wrap, $gap: 30px);
+        margin-top: 20px;
+      }
+  }
+}
+}

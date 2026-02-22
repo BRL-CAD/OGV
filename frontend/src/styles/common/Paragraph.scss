@@ -1,0 +1,4 @@
+.paragraph-default {
+  @include font($fontSize: 16px, $fontWeight: 400);
+  margin: 0;
+}

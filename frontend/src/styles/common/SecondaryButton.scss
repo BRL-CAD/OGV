@@ -1,0 +1,21 @@
+.secondary-button {
+  & {
+    @include flex($alignItems: center, $gap: 10px);
+    background-color: $surface-color;
+    color: $text-color;
+    border: 1px solid $primary-color;
+    border-radius: $border-radius;
+    padding: 2px 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  &:hover {
+    background-color: $primary-color;
+    color: $surface-color;
+  }
+  &-label {
+    @include font($fontSize: 14px, $fontWeight: 500);
+    color: $text-color;
+    margin: 0;
+  }
+}

@@ -1,0 +1,273 @@
+.model-preview {
+  &-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    @include flex($justifyContent: center, $alignItems: center);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+  }
+
+  &-modal {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    width: 95vw;
+    height: 95vh;
+    @include flex($direction: column);
+    overflow: hidden;
+    animation: modalSlideIn 0.3s ease-out;
+  }
+
+  &-modal-header {
+    @include flex($justifyContent: space-between, $alignItems: center);
+    padding: 16px 20px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #fafafa;
+
+    h3 {
+      margin: 0;
+      @include font($fontSize: 1.3rem, $fontWeight: 600);
+      font-weight: 600;
+      color: #333;
+    }
+  }
+
+  &-modal-close {
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
+
+  &-modal-content {
+    flex: 1;
+    @include flex($direction: column);
+    padding: 16px;
+    overflow: hidden;
+  }
+
+  &-loading,
+  &-error {
+    @include flex($direction: column, $justifyContent: center, $alignItems: center);
+    height: 100%;
+    text-align: center;
+
+    p {
+      @include font($fontSize: 1.1rem);
+      color: #666;
+      margin-bottom: 20px;
+    }
+  }
+
+  &-retry {
+    background: #d0245e;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    @include font($fontSize: 1rem);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background: #b01f4e;
+    }
+  }
+
+  &-controls {
+    margin-bottom: 20px;
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+  }
+
+  &-control-row {
+    @include flex($direction: column);
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  &-scale-control {
+    @include flex($direction: column, $alignItems: stretch);
+    gap: 8px;
+    min-width: auto;
+
+    label {
+      @include font($fontWeight: 500);
+      color: #495057;
+      min-width: auto;
+    }
+
+    span {
+      @include font($fontWeight: 500);
+      color: #6c757d;
+      min-width: auto;
+      text-align: left;
+    }
+  }
+
+  &-grid-control {
+    @include flex($direction: column);
+    align-items: stretch;
+    gap: 8px;
+    min-width: auto;
+  }
+
+  &-grid-toggle {
+    padding: 8px 16px;
+    border: 2px solid #d0245e;
+    background: transparent;
+    color: #d0245e;
+    border-radius: 6px;
+    @include font($fontWeight: 600);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 60px;
+
+    &:hover {
+      background: #d0245e;
+      color: white;
+    }
+
+    &.active {
+      background: #d0245e;
+      color: white;
+    }
+  }
+
+  &-scale-slider {
+    flex: 1;
+    height: 6px;
+    border-radius: 3px;
+    background: #dee2e6;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #d0245e;
+      cursor: pointer;
+      border: 2px solid white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    &::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #d0245e;
+      cursor: pointer;
+      border: 2px solid white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &-canvas-container {
+    flex: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e9ecef;
+    background: #f0f0f0;
+    position: relative;
+  }
+
+  &-canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  &-instructions {
+    margin-top: 16px;
+    padding: 16px;
+    background: #e3f2fd;
+    border-radius: 8px;
+    border-left: 4px solid #2196f3;
+
+    p {
+      margin: 4px 0;
+      @include font($fontSize: 0.9rem);
+      color: #1976d2;
+
+      &:first-child {
+        @include font($fontWeight: 600);
+        margin-bottom: 8px;
+      }
+    }
+  }
+}
+@media (min-width: 768px) {
+  .model-preview {
+    &-modal {
+      width: 90vw;
+      max-width: 1200px;
+      height: 90vh;
+      max-height: 800px;
+    }
+
+    &-modal-header {
+      padding: 20px 24px;
+
+      h3 {
+        font-size: 1.5rem;
+      }
+    }
+
+    &-modal-content {
+      padding: 20px;
+    }
+
+    &-control-row {
+      @include flex($direction: row);
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    &-scale-control {
+      @include flex($direction: row);
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+      min-width: 200px;
+
+      label {
+        min-width: 50px;
+      }
+
+      span {
+        min-width: 60px;
+        text-align: right;
+      }
+    }
+
+    &-grid-control {
+      @include flex($direction: row, $alignItems: center);
+      gap: 12px;
+      min-width: 120px;
+    }
+  }
+}
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

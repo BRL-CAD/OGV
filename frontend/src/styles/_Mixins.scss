@@ -1,0 +1,93 @@
+@mixin flex($display: flex,
+  $direction: null,
+  $placeContent: null,
+  $placeItems: null,
+  $wrap: null,
+  $shrink: null,
+  $grow: null,
+  $gap: null,
+  $alignContent: null,
+  $justifyContent: null,
+  $alignItems: null,
+  $justifyItems: null) {
+  display: $display;
+
+  @if $direction {
+    flex-direction: $direction;
+  }
+
+  @if $placeContent==null {
+    @if $alignContent {
+      align-content: $alignContent;
+    }
+
+    @if $justifyContent {
+      justify-content: $justifyContent;
+    }
+  }
+
+  @else {
+    place-content: $placeContent;
+  }
+
+  @if $placeItems==null {
+    @if $alignItems {
+      align-items: $alignItems;
+    }
+
+    @if $justifyItems {
+      justify-items: $justifyItems;
+    }
+  }
+
+  @else {
+    place-items: $placeItems;
+  }
+
+  @if $wrap {
+    flex-wrap: $wrap;
+  }
+
+  @if $shrink {
+    flex-shrink: $shrink;
+  }
+
+  @if $grow {
+    flex-grow: $grow;
+  }
+
+  @if $gap {
+    gap: $gap;
+  }
+}
+
+@mixin font($fontSize: null,
+  $lineHeight: null,
+  $fontFamily: null,
+  $fontWeight: null,
+  $color:null,
+  $textTransform: null) {
+  @if $fontSize {
+    font-size: $fontSize;
+  }
+
+  @if $lineHeight {
+    line-height: $lineHeight;
+  }
+
+  @if $fontFamily {
+    font-family: $fontFamily;
+  }
+
+  @if $fontWeight {
+    font-weight: $fontWeight;
+  }
+
+  @if $color {
+    color: $color;
+  }
+
+  @if $textTransform {
+    text-transform: $textTransform;
+  }
+}

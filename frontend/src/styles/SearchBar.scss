@@ -1,0 +1,23 @@
+.search-bar {
+  padding: 10px 5px;
+  @include flex($alignItems: center, $justifyContent: space-between);
+  width: 100%;
+  border-radius: $border-radius;
+  border: 1px solid $border-color;
+  outline: none;
+  @include font($fontSize: 1rem, $fontWeight: 400);
+  padding-left: 10px;
+  color: $text-color;
+  background-color: $surface-color;
+}
+.search-bar-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+@media (min-width: $breakpoint-small) {
+  .search-bar {
+    width: 50%;
+  }
+}

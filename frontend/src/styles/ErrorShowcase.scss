@@ -1,0 +1,11 @@
+.error-showcase {
+  @include flex($direction: column, $alignItems: center, $justifyContent: center, $gap: 10px);
+  width: 100%;
+  height: 100%;
+  &-text,
+  &-sub-text {
+    @include font($fontSize: 1rem, $fontWeight: 500);
+    color: $text-color;
+    text-align: center;
+  }
+}

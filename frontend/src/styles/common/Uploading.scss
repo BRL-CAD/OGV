@@ -1,0 +1,184 @@
+.uploading-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  @include flex($justifyContent: center, $alignItems: center);
+  z-index: 1000;
+  padding: 16px;
+}
+
+.uploading-modal {
+  background: $surface-color;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  max-width: 100%;
+  width: 100%;
+  overflow: hidden;
+  animation: modalSlideIn 0.3s ease-out;
+}
+  
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+  
+.modal-header {
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid $border-color;
+  position: relative;
+  @include flex($justifyContent: space-between, $alignItems: center);
+}
+
+.modal-close-button {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  background: none;
+  border: none;
+  @include font($fontSize: 20px, $fontWeight: 500);
+  color: $text-secondary-color;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  @include flex($justifyContent: center, $alignItems: center);
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: $border-color;
+    color: $text-color;
+  }
+}
+  
+.modal-title {
+  @include font($fontSize: 18px, $fontWeight: 600);
+  color: $text-color;
+  margin: 0;
+  text-align: center;
+}
+  
+.modal-content {
+  padding: 16px;
+}
+  
+.file-status {
+  @include flex($direction: column, $alignItems: flex-start, $gap: 12px);
+  margin-bottom: 20px;
+}
+  
+.file-info {
+  @include flex($alignItems: center, $gap: 12px);
+}
+  
+.file-icon {
+  width: 20px;
+  height: 20px;
+  color: $text-secondary-color;
+}
+  
+.file-name {
+  @include font($fontSize: 14px, $fontWeight: 500);
+  color: $text-color;
+}
+  
+.status-text {
+  @include font($fontSize: 12px, $fontWeight: 500);
+  color: $text-secondary-color;
+  align-self: flex-end;
+  
+  &.completed {
+    color: #10b981;
+    @include font($fontWeight: 600);
+  }
+  
+  &.error {
+    color: #ef4444;
+    @include font($fontWeight: 600);
+  }
+}
+  
+.processing-message {
+  @include font($fontSize: 14px, $lineHeight: 1.5);
+  color: $text-secondary-color;
+  text-align: center;
+  margin: 0;
+}
+  
+.modal-actions {
+  @include flex($direction: column, $gap: 12px);
+  padding: 0 16px 16px;
+}
+  
+.view-file-button,
+.copy-link-button {
+  flex: 1;
+  @include flex($justifyContent: center, $alignItems: center);
+}
+
+@media (min-width: $breakpoint-small) {
+  .uploading-modal-overlay {
+    padding: 20px;
+  }
+  
+  .uploading-modal {
+    max-width: 480px;
+    margin: 0 16px;
+  }
+  
+  .modal-header {
+    padding: 24px 24px 16px;
+  }
+  
+  .modal-close-button {
+    right: 24px;
+    top: 24px;
+    @include font($fontSize: 24px, $fontWeight: 500);
+  }
+  
+  .modal-title {
+    @include font($fontSize: 24px, $fontWeight: 600);
+  }
+  
+  .modal-content {
+    padding: 24px;
+  }
+  
+  .file-status {
+    @include flex($justifyContent: space-between, $alignItems: center);
+    flex-direction: row;
+  }
+  
+  .file-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .file-name {
+    @include font($fontSize: 16px, $fontWeight: 500);
+  }
+  
+  .status-text {
+    @include font($fontSize: 14px, $fontWeight: 500);
+    align-self: auto;
+  }
+  
+  .processing-message {
+    @include font($fontSize: 16px, $lineHeight: 1.5);
+  }
+  
+  .modal-actions {
+    flex-direction: row;
+    padding: 0 24px 24px;
+  }
+}
+

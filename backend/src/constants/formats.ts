@@ -1,0 +1,36 @@
+export const InputFormats = [
+  'obj',
+  'stl',
+  'ply',
+  'vrml',
+  '3mf',
+  'asc',
+  'x',
+  'x3d',
+  '3ds',
+  'dae',
+  'fbx',
+  'json',
+  'assbin',
+  'fbx',
+  'g',
+];
+export const OutputFormats = [
+  'obj',
+  'stl',
+  'ply',
+  'vrml',
+  '3mf',
+  'asc',
+  'x',
+  'x3d',
+  '3ds',
+  'dae',
+  'fbx',
+  'json',
+  'assbin',
+  'fbx',
+  'g',
+];
+export const MaxFileSize = 20 * 1024 * 1024;
+export const ValidImageFormats = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'tiff', 'ico', 'webp'];

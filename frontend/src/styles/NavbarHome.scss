@@ -1,0 +1,57 @@
+.navbar-home {
+  &-container {
+    @include flex($justifyContent: space-between, $alignItems: center);
+    padding: 5px 15px;
+    background-color: $surface-color;
+    border-bottom: 1px solid $border-color;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  &-hamburger-icon {
+    display: block;
+  }
+  &-right {
+    @include flex();
+  }
+  &-right-menu {
+    display: none;
+  }
+  &-right-menu.active {
+    padding: 12px;
+    @include flex($direction: column, $gap: 10px);
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 100%;
+    background-color: $surface-color;
+    border: 1px solid $border-color;
+    border-radius: 0 0 10px 10px;
+  }
+  &-right-menu-item {
+    color: $text-color;
+    text-decoration: none;
+    @include font($fontSize: 1.2rem);
+  }
+  &-try-now-button {
+    border-radius: 10px !important;
+    padding: 10px 16px !important;
+    cursor: pointer !important;
+  }
+}
+@media (min-width: 768px) {
+  .navbar-home {
+    &-hamburger-icon {
+      display: none;
+    }
+    &-right-menu,
+    &-right-menu.active {
+      position: static;
+      width: 100%;
+      @include flex($direction: row, $gap: 16px, $alignItems: center, $justifyContent: space-between);
+      padding: 0;
+      border: none;
+      border-radius: 0;
+    }
+  }
+}

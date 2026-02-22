@@ -1,0 +1,36 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family-rounded;
+  background-color: $bg-color;
+  scroll-behavior: smooth;
+}
+
+@media screen and (min-width: $breakpoint-small) {
+  .dashboard-container {
+    display: flex;
+    flex-direction: row;
+  }
+  .dashboard-content {
+    margin-left: $sidebar-width-small;
+    width: 100%;
+  }
+}
+@media screen and (min-width: $breakpoint-medium) {
+  .dashboard-content {
+    margin-left: $sidebar-width-medium;
+    width: 100%;
+  }
+}
+@media screen and (min-width: $breakpoint-large) {
+  .dashboard-content {
+    margin-left: $sidebar-width-large;
+    width: 100%;
+  }
+}

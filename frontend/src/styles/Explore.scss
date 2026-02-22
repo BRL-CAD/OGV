@@ -1,0 +1,82 @@
+.explore-page {
+  padding: 20px;
+  &-container {
+    @include flex($wrap: wrap, $gap: 10px);
+  }
+  &-header {
+    width: 100%;
+    @include flex($wrap: wrap, $alignItems: center, $justifyContent: space-between);
+  }
+  &-count-container {
+    margin-top: 10px;
+    width: fit-content;
+    background-color: $surface-color;
+    padding: 10px 5px;
+    border-radius: $border-radius;
+    border: 1px solid $border-color;
+    width: fit-content;
+    @include font($fontSize: 1rem, $fontWeight: 400);
+  }
+  &-models-container {
+    margin-top: 20px;
+    @include flex($justifyContent: center, $alignItems: center, $wrap: wrap, $gap: 10px);
+  }
+  &-search-not-found {
+    @include flex($direction: column, $alignItems: center, $justifyContent: center, $gap: 20px);
+    height: 40vh;
+  }
+  &-model-loading-container {
+    @include flex($direction: column, $justifyContent: center, $alignItems: center, $gap: 20px);
+    height: 50vh;
+  }
+  &-model-loading-error-container {
+    @include flex($direction: column, $justifyContent: center, $alignItems: center, $gap: 20px);
+    height: 50vh;
+  }
+  &-model-loading-error {
+    padding: 10px 20px;
+    background-color: #d0245e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  &-model-empty-container {
+    @include flex($justifyContent: center, $alignItems: center);
+    height: 50vh;
+    @include flex($direction: column, $alignItems: center, $justifyContent: center);
+    gap: 20px;
+  }
+  &-model-error-not-found-text {
+    @include font($fontSize: 1.5rem, $fontWeight: 600);
+    color: #d0245e;
+  }
+  &-model-empty-button {
+    padding: 10px 20px;
+    background-color: #d0245e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  &-search-not-found {
+    @include flex($direction: column, $alignItems: center, $justifyContent: center);
+    width: 100%;
+  }
+  &-retry-button {
+    padding: 10px 20px;
+    background-color: #d0245e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+}
+@media (min-width: $breakpoint-small) {
+  .explore-page-models-container {
+    justify-content: start;
+    gap: 10px;
+  }
+  .explore-page-count-container {
+    margin-top: 0;
+  }
+}

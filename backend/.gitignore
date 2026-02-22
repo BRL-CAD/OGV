@@ -1,0 +1,15 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+
+.DS_Store
+# Prisma
+/generated/prisma
+
+docker-compose.yml
+.env
+
+# Upload directories (within source code)
+uploads/

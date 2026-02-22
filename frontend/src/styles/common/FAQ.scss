@@ -1,0 +1,45 @@
+.faq {
+  &-container {
+    @include flex($direction: column, $justifyContent: center, $alignItems: center, $wrap: nowrap, $gap: 20);
+    width: 100%;
+  }
+  &-items {
+    width: 100%;
+  }
+  &-item {
+    @include flex($direction: row, $justifyContent: space-between, $alignItems: center, $wrap: nowrap, $gap: 10);
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid $border-color;
+    background-color: $bg-color;
+    cursor: pointer;
+  }
+  &-answer {
+    @include font($fontSize: 1rem, $fontWeight: 400);
+    padding: 10px;
+  }
+  &-question {
+    @include font($fontSize: 1.2rem, $fontWeight: 500);
+  }
+  &-icon {
+    &-button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+    &-open {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      border: 1px solid $border-color;
+      padding: 5px;
+    }
+    &-closed {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      border: 1px solid $border-color;
+      padding: 5px;
+    }
+  }
+}

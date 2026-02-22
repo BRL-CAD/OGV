@@ -1,0 +1,45 @@
+.file-information {
+  &-container {
+    padding: 16px;
+    border-radius: $border-radius;
+    border: 1px solid $border-color;
+    background: $surface-color;
+    width: 100%;
+    height: fit-content;
+  }
+  &-heading {
+    margin-bottom: 16px;
+    @include font($fontSize: 1.5rem, $fontWeight: 500);
+  }
+  &-content {
+    @include flex($direction: column, $gap: 5px);
+  }
+  &-content-item {
+    @include flex($direction: row, $gap: 8px, $wrap: wrap, $justifyContent: space-between, $alignItems: center);
+  }
+  &-label {
+    color: $tertiary-color;
+    @include font($fontSize: 1rem);
+    margin: 0;
+  }
+  &-select {
+    padding: 8px;
+    border-radius: $border-radius;
+    border: 1px solid $border-color;
+    background: $bg-color;
+  }
+}
+@media (min-width: $breakpoint-medium) {
+  .file-information {
+    &-container {
+      max-width: 35%;
+    }
+  }
+}
+@media (min-width: $breakpoint-large) {
+  .file-information {
+    &-container {
+      max-width: 30%;
+    }
+  }
+}

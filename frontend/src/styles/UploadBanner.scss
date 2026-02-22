@@ -1,0 +1,19 @@
+.upload-banner {
+  @include flex($justifyContent: space-between, $wrap: wrap, $alignItems: center);
+  width: 100%;
+  background-color: $surface-color;
+  padding: 16px;
+  border-bottom: 1px solid $border-color;
+}
+.button-container {
+  @include flex($gap: 10px);
+}
+.preview-button {
+  &:hover {
+    .svg-icon {
+      path {
+        fill: $surface-color;
+      }
+    }
+  }
+}

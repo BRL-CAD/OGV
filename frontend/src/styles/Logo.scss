@@ -1,0 +1,28 @@
+.logo {
+  &-container {
+    @include flex($alignItems: center, $gap: 2px);
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+  }
+  &-link {
+    text-decoration: none;
+    color: $text-color;
+  }
+  &-heading {
+    @include font($fontSize: 2rem);
+  }
+  &-image {
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    width: 35px;
+    height: 35px;
+  }
+}
+@media (min-width: $breakpoint-small) {
+  .logo-heading {
+    @include font($fontSize: 2.5rem);
+  }
+}

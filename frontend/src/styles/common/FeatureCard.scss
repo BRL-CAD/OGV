@@ -1,0 +1,32 @@
+.feature-card {
+  @include flex($direction: column, $justifyContent: flex-start, $alignItems: stretch, $wrap: nowrap);
+  padding: 16px;
+  border-radius: $border-radius;
+  background-color: $surface-color;
+  border: 1px solid $border-color;
+  width: 100%;
+
+  &-title {
+    @include font($fontSize: 1.5rem, $fontWeight: 500);
+    color: $primary-color;
+  }
+  &-description {
+    @include font($fontSize: 1rem, $fontWeight: 400);
+    flex-grow: 1;
+  }
+  &-index {
+    @include font($fontSize: 1rem, $fontWeight: 400); 
+    background: $primary-color;
+    color: $text-accent-color;
+    padding: 15px 20px;
+    border-radius: 50%;
+    width: fit-content;
+    margin-top: 16px;
+  }
+}
+@media (min-width: $breakpoint-small) {
+  .feature-card {
+    max-width: 310px;
+    padding: 24px;
+  }
+}

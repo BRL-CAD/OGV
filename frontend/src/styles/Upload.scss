@@ -1,0 +1,62 @@
+.file-main-container {
+  @include flex($direction: column, $gap: 16px);
+  padding: 16px;
+}
+.upload {
+  &-container {
+    @include flex($direction: column, $gap: 16px);
+  }
+  &-file-container-background {
+    width: 100%;
+    height: 100%;
+    background: $surface-color;
+  }
+  &-file-container {
+    padding: 16px;
+    border-radius: $border-radius;
+    border: 1px solid $border-color;
+    height: 100%;
+  }
+  &-file-container-heading {
+    color: $text-color;
+    margin: 10px 0;
+  }
+  &-file-container-checkbox {
+    @include flex($wrap: wrap, $gap: 16px);
+  }
+  &-file-container-checkbox-item {
+    @include flex($alignItems: center, $gap: 8px);
+    input {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      accent-color: $primary-color;
+    }
+  }
+  &-file-container-button {
+    width: 100%;
+    margin: 16px 0;
+    padding: 16px;
+    transition: all 0.3s ease;
+  }
+  &-file-container-button:hover {
+    transform: scale(1.01);
+    transform: translateY(-2px);
+  }
+}
+
+@media (min-width: $breakpoint-medium) {
+  .file-main-container {
+    @include flex($direction: row);
+  }
+  .upload-container {
+    min-width: 65%;
+    max-width: 65%;
+  }
+}
+@media (min-width: $breakpoint-large) {
+  .upload-container {
+    min-width: 65%;
+    max-width: 70%;
+  }
+}

@@ -1,0 +1,25 @@
+export const MIME_Types: Record<string, string> = {
+  obj: 'model/obj',
+  stl: 'model/stl',
+  ply: 'application/octet-stream',
+  vrml: 'model/vrml',
+  '3mf': 'model/3mf',
+  asc: 'application/pgp-keys',
+  x: 'application/octet-stream',
+  x3d: 'model/x3d+xml',
+  '3ds': 'image/x-3ds',
+  dae: 'model/vnd.collada+xml',
+  fbx: 'application/x-fbx',
+  json: 'application/json',
+  assbin: 'application/octet-stream',
+  g: 'application/octet-stream',
+};
+export const ValidImageMimeTypes = [
+  'image/jpeg',
+  'image/jpg',
+  'image/png',
+  'image/bmp',
+  'image/tiff',
+  'image/x-icon',
+  'image/webp',
+];
