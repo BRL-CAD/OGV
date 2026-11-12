@@ -10,6 +10,9 @@ dist/
 
 docker-compose.yml
 .env
+.env.local
+.env.dev
+.env.prod
 
 # Upload directories (within source code)
 uploads/
